@@ -44,8 +44,11 @@ class SupabaseValveCommandRepository implements ValveCommandRepository {
           .select()
           .single();
       return ValveCommand.fromJson(inserted);
-    } catch (e) {
-      // Retry with minimal payload if schema differs
+    } catch (error, stackTrace) {
+      // ignore: avoid_print
+      print(
+        'SupabaseValveCommandRepository._insert: first attempt failed, retrying with minimal payload (zoneId=$zoneId, type=${type.name}): $error\n$stackTrace',
+      );
       final inserted = await _client
           .from('valve_commands')
           .insert({

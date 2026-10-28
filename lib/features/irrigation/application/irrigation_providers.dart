@@ -37,7 +37,9 @@ class IrrigationActions {
       final saved = await repository.getForZone(settings.zoneId);
       _invalidateAll();
       return saved ?? settings;
-    } catch (_) {
+    } catch (error, stackTrace) {
+      // ignore: avoid_print
+      print('IrrigationActions.saveSettings: failed to reload saved settings: $error\n$stackTrace');
       _invalidateAll();
       return settings;
     }

@@ -313,7 +313,10 @@ class _ModeSelectorState extends ConsumerState<_ModeSelector> {
         await ref
             .read(irrigationSettingsProvider.future)
             .timeout(const Duration(seconds: 5));
-      } catch (_) {}
+      } catch (error, stackTrace) {
+        // ignore: avoid_print
+        print('Irrigation mode: failed to refresh settings: $error\n$stackTrace');
+      }
       if (!mounted) return;
       setState(() {
         saving = false;

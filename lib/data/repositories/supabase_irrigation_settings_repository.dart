@@ -1,3 +1,5 @@
+import 'dart:developer' as developer;
+
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../domain/models/irrigation_settings.dart';
@@ -49,7 +51,14 @@ class SupabaseIrrigationSettingsRepository
           )
           .select();
       return;
-    } catch (_) {}
+    } catch (error, stackTrace) {
+      developer.log(
+        'IrrigationSettings upsert attempt 1 failed, trying update',
+        name: 'Sertech.IrrigationSettings',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
     try {
       final updated = await _client
           .from('irrigation_settings')
@@ -63,7 +72,14 @@ class SupabaseIrrigationSettingsRepository
           .eq('zone_id', settings.zoneId)
           .select();
       if (updated.isNotEmpty) return;
-    } catch (_) {}
+    } catch (error, stackTrace) {
+      developer.log(
+        'IrrigationSettings upsert attempt 2 failed, trying insert',
+        name: 'Sertech.IrrigationSettings',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
     try {
       await _client
           .from('irrigation_settings')
@@ -78,7 +94,14 @@ class SupabaseIrrigationSettingsRepository
           })
           .select();
       return;
-    } catch (_) {}
+    } catch (error, stackTrace) {
+      developer.log(
+        'IrrigationSettings upsert attempt 3 failed, trying minimal upsert',
+        name: 'Sertech.IrrigationSettings',
+        error: error,
+        stackTrace: stackTrace,
+      );
+    }
     try {
       await _client
           .from('irrigation_settings')
@@ -92,7 +115,13 @@ class SupabaseIrrigationSettingsRepository
           }, onConflict: 'zone_id')
           .select();
       return;
-    } catch (e) {
+    } catch (e, st) {
+      developer.log(
+        'IrrigationSettings upsert failed after all fallbacks',
+        name: 'Sertech.IrrigationSettings',
+        error: e,
+        stackTrace: st,
+      );
       rethrow;
     }
   }
