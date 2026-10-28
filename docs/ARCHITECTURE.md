@@ -11,6 +11,7 @@
 - Measures: ESP32 → MQTT (local) → Raspberry Pi → Supabase → App
 - Commands: App → Supabase → Raspberry Pi → MQTT (local) → hardware
 - Automation is independent of mobile device
+- **Realtime** : Le dashboard écoute les nouvelles mesures via Supabase Realtime (`sensor_data` filtré par `zone_id`). Les mises à jour sont fusionnées dans les providers Riverpod pour un rafraîchissement automatique.
 
 ## Folders
 - `lib/app/`: theme, router, app, providers (infrastructure wiring)

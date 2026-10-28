@@ -4,13 +4,14 @@ Sertech est une application Flutter de supervision et pilotage de l'irrigation a
 
 ## Fonctionnalités principales
 
-- **Tableau de bord** : aperçu synthétique des zones, mesures récentes et commandes
+- **Tableau de bord** : aperçu synthétique des zones, mesures récentes et commandes avec mise à jour en temps réel
 - **Zones** : gestion des parcelles/zones avec seuils d'irrigation
-- **Mesures** : historique des relevés d'humidité par zone
+- **Mesures** : historique des relevés d'humidité par zone avec actualisation automatique
 - **Irrigation** : pilotage manuel des vannes et configuration des paramètres
 - **Activité** : historique des commandes de vanne
 - **Paramètres** : thème, langue, source de données (Supabase / données de démonstration)
 - **Mode démo** : fonctionne hors ligne avec des données de démonstration cohérentes
+- **Temps réel (Supabase)** : le dashboard se met à jour automatiquement à l'insertion de nouvelles mesures dans `sensor_data` sans actualisation manuelle.
 
 ## Architecture
 
@@ -44,6 +45,8 @@ SUPABASE_PUBLISHABLE_KEY=sb_publishable_ACJWlzQHlZjBrEguHvfOxg_3BJgxAaH
 
 Les valeurs par défaut dans `lib/core/config/app_config.dart` pointent vers un Supabase local (`http://127.0.0.1:54321`). Vous pouvez aussi les passer via `--dart-define`.
 
+**Sur un appareil physique connecté au même réseau**, remplacez `127.0.0.1` par l'adresse IP LAN de votre Raspberry Pi (ex. `http://192.168.1.100:54321`), car `127.0.0.1` désigne l'appareil lui-même.
+
 ### Supabase local
 
 1. Installer [Supabase CLI](https://supabase.com/docs/guides/cli)
@@ -56,7 +59,7 @@ supabase start
 supabase db reset  # ou supabase migration up
 ```
 
-Le schéma est défini dans `supabase/migrations/20251015000000_init_sertech.sql`. Voir [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md) pour plus de détails.
+Le schéma est défini dans `supabase/migrations/20251015000000_init_sertech.sql`. Les migrations incluent l'activation de Realtime pour `sensor_data` et `REPLICA IDENTITY FULL`. Voir [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md) pour plus de détails.
 
 ## Installation et exécution
 
@@ -96,6 +99,9 @@ flutter test --coverage
 
 # Lancer un fichier de test spécifique
 flutter test test/unit/irrigation_rules_test.dart
+
+# Vérifier l'analyse statique
+flutter analyze
 ```
 
 ## Structure du projet
