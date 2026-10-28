@@ -178,6 +178,10 @@ class InMemorySensorDataRepository implements SensorDataRepository {
   @override
   Stream<SensorData?> watchLatest(String zoneId) async* {
     yield await getLatest(zoneId);
+    while (true) {
+      await Future.delayed(const Duration(seconds: 2));
+      yield await getLatest(zoneId);
+    }
   }
 }
 
@@ -270,5 +274,9 @@ class InMemoryValveCommandRepository implements ValveCommandRepository {
   @override
   Stream<List<ValveCommand>> watchForZone(String zoneId) async* {
     yield await getHistory(zoneId);
+    while (true) {
+      await Future.delayed(const Duration(seconds: 2));
+      yield await getHistory(zoneId);
+    }
   }
 }

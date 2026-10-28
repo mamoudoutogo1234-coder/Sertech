@@ -16,11 +16,21 @@ final historyPeriodProvider = StateProvider<HistoryPeriod>(
 typedef HistoryQuery = ({String zoneId, HistoryPeriod period});
 
 /// Historique d'une zone sur une période donnée.
-final historyProvider = FutureProvider.family<List<SensorData>, HistoryQuery>((
+final historyProvider = StreamProvider.family<List<SensorData>, HistoryQuery>((
   ref,
   query,
-) {
-  return ref
-      .watch(sensorDataRepositoryProvider)
-      .getHistoryForPeriod(query.zoneId, query.period);
+) async* {
+  final repo = ref.watch(sensorDataRepositoryProvider);
+  // Émettre l'état initial
+  final initial = await repo.getHistoryForPeriod(query.zoneId, query.period);
+  yield initial;
+  // Mettre à jour périodiquement pour refléter les nouvelles mesures
+  await for (final _ in Stream.periodic(const Duration(seconds: 2))) {
+    try {
+      final history = await repo.getHistoryForPeriod(query.zoneId, query.period);
+      yield history;
+    } catch (_) {
+      // Garder les dernières données en cas d'erreur
+    }
+  }
 });

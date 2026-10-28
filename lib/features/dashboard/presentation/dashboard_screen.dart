@@ -35,8 +35,10 @@ class DashboardScreen extends ConsumerWidget {
       body: RefreshIndicator(
         onRefresh: () async {
           ref.invalidate(dashboardSnapshotProvider);
+          ref.invalidate(latestMeasurementsProvider);
           ref.invalidate(historyProvider);
-          await ref.read(dashboardSnapshotProvider.future);
+          // Attendre un peu pour que les streams se mettent à jour
+          await Future.delayed(const Duration(milliseconds: 300));
         },
         child: snapshot.when(
           loading: () => ListView(
@@ -58,7 +60,10 @@ class DashboardScreen extends ConsumerWidget {
                 message: l10n.genericErrorTitle,
                 technicalDetails: '$error',
                 retryLabel: l10n.retry,
-                onRetry: () => ref.invalidate(dashboardSnapshotProvider),
+                onRetry: () {
+          ref.invalidate(dashboardSnapshotProvider);
+          ref.invalidate(latestMeasurementsProvider);
+        },
               ),
             ],
           ),

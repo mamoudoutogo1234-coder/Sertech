@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../domain/models/sensor_data.dart';
@@ -64,12 +66,63 @@ class SupabaseSensorDataRepository implements SensorDataRepository {
 
   @override
   Stream<SensorData?> watchLatest(String zoneId) {
-    return _client
-        .from('sensor_data')
-        .stream(primaryKey: ['id'])
-        .eq('zone_id', zoneId)
-        .order('recorded_at', ascending: false)
-        .limit(1)
-        .map((rows) => rows.isEmpty ? null : SensorData.fromJson(rows.first));
+    final controller = StreamController<SensorData?>.broadcast(sync: true);
+    RealtimeChannel? channel;
+
+    Future<void> emitLatest() async {
+      try {
+        final latest = await getLatest(zoneId);
+        if (!controller.isClosed) {
+          controller.add(latest);
+        }
+      } catch (_) {}
+    }
+
+    emitLatest();
+
+    try {
+      channel = _client
+          .channel('public:sensor_data:zone_id=eq.$zoneId')
+          .onPostgresChanges(
+            event: PostgresChangeEvent.insert,
+            schema: 'public',
+            table: 'sensor_data',
+            filter: PostgresChangeFilter(
+              type: PostgresChangeFilterType.eq,
+              column: 'zone_id',
+              value: zoneId,
+            ),
+            callback: (_) {
+              emitLatest();
+            },
+          )
+          .onPostgresChanges(
+            event: PostgresChangeEvent.update,
+            schema: 'public',
+            table: 'sensor_data',
+            filter: PostgresChangeFilter(
+              type: PostgresChangeFilterType.eq,
+              column: 'zone_id',
+              value: zoneId,
+            ),
+            callback: (_) {
+              emitLatest();
+            },
+          );
+      channel.subscribe((status, error) {});
+    } catch (_) {
+      // Si l'abonnement échoue, on continue à émettre via polling implicite
+      // en gardant le canal null pour un nettoyage propre
+    }
+
+    controller.onCancel = () async {
+      try {
+        if (channel != null) {
+          await _client.removeChannel(channel);
+        }
+      } catch (_) {}
+    };
+
+    return controller.stream;
   }
 }

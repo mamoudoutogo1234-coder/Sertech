@@ -113,7 +113,9 @@ class MeasurementsScreen extends ConsumerWidget {
                     message: l10n.genericErrorTitle,
                     technicalDetails: '$error',
                     retryLabel: l10n.retry,
-                    onRetry: () => ref.invalidate(historyProvider),
+                    onRetry: () {
+                  ref.invalidate(historyProvider);
+                },
                   ),
                 ),
                 data: (readings) {

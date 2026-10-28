@@ -8,6 +8,7 @@ import '../data/demo/demo_scenario.dart';
 import '../data/repositories/in_memory_repositories.dart';
 import '../data/repositories/in_memory_rpi_health_repository.dart';
 import '../data/repositories/in_memory_dashboard_repository.dart';
+import '../data/repositories/supabase_dashboard_repository.dart';
 import '../data/repositories/supabase_irrigation_settings_repository.dart';
 import '../data/repositories/supabase_profile_repository.dart';
 import '../data/repositories/supabase_sensor_data_repository.dart';
@@ -145,6 +146,18 @@ final cameraRepositoryProvider = Provider<CameraRepository>((ref) {
 });
 
 final dashboardRepositoryProvider = Provider<DashboardRepository>((ref) {
+  final client = ref.watch(supabaseClientProvider);
+  if (ref.watch(effectiveDataModeProvider) == DataMode.supabase &&
+      client != null) {
+    return SupabaseDashboardRepository(
+      zoneRepository: ref.watch(zoneRepositoryProvider),
+      sensorDataRepository: ref.watch(sensorDataRepositoryProvider),
+      irrigationSettingsRepository: ref.watch(
+        irrigationSettingsRepositoryProvider,
+      ),
+      valveCommandRepository: ref.watch(valveCommandRepositoryProvider),
+    );
+  }
   return InMemoryDashboardRepository(
     zoneRepository: ref.watch(zoneRepositoryProvider),
     sensorDataRepository: ref.watch(sensorDataRepositoryProvider),

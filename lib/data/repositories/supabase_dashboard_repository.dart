@@ -5,8 +5,7 @@ import '../../domain/repositories/valve_command_repository.dart';
 import '../../domain/repositories/zone_repository.dart';
 
 /// Compose les repositories Supabase pour produire la synthèse du tableau de
-/// bord. Aucune requête ne renvoie de données de substitution : si une table
-/// est vide, l'application affiche un état vide.
+/// bord.
 class SupabaseDashboardRepository implements DashboardRepository {
   final ZoneRepository zoneRepository;
   final SensorDataRepository sensorDataRepository;
