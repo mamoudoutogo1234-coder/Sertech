@@ -25,6 +25,11 @@ class ZonesScreen extends ConsumerWidget {
     final zonesAsync = ref.watch(zonesProvider);
 
     return SertechScaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => showZoneFormSheet(context),
+        tooltip: l10n.createZone,
+        child: const Icon(Icons.add),
+      ),
       body: zonesAsync.when(
         loading: () => ListView(
           physics: const AlwaysScrollableScrollPhysics(),
