@@ -1,0 +1,490 @@
+{
+  "@@locale": "bm",
+  "appName": "Sertech",
+  "navAccueil": "So",
+  "navZones": "Yɔrɔw",
+  "navIrrigation": "Ji bɔli",
+  "navCamera": "Kamera",
+  "navActivity": "Kɛwalew",
+  "dashboardTitle": "Ɲɛnɛkɛnɛ",
+  "settings": "Suguya",
+  "notifications": "Kibaruya",
+  "back": "Segin",
+  "retry": "Segin",
+  "cancel": "Abolɔ",
+  "save": "Sɛbɛn",
+  "delete": "Jɔsi",
+  "edit": "Jaabi",
+  "add": "Fara",
+  "close": "Datugu",
+  "confirm": "Sɛmɛ",
+  "refresh": "Yɛlɛma",
+  "search": "Ɲɛn",
+  "viewAll": "Bɛɛ ye",
+  "loading": "Bɛ don…",
+  "error": "Fili",
+  "unknown": "Dɔ ma lɔn",
+  "notAvailable": "Tɛ sɔrɔ",
+  "none": "Foyi",
+  "all": "Bɛɛ",
+  "yes": "Ɲa",
+  "no": "ƆƆ",
+  "noData": "—",
+  "unknownState": "Cogoya ma lɔn",
+  "offline": "Ofrɛli",
+  "online": "Jɛnsɛnnen",
+  "noInstallationConfigured": "Sɛnɛyɔrɔ ma labɛn",
+  "noInstallationConfiguredDesc": "Ji bɔli yɔrɔw bɛna jira yan ni u labɛnnen don.",
+  "noRecentActivity": "Kɛwale sisan tɛ yen",
+  "noRecentActivityDesc": "Ji bɔli bole bɛna jira yan.",
+  "genericErrorTitle": "A bɛ fana ladata sɛbɛn",
+  "supabaseErrorHint": "Supabase modu ye fana te ye bɛ na data mɔgɔ sɛbɛn.",
+  "justNow": "Dɔ bɛ la",
+  "minutesAgo": "{count, plural, =1{A minɛnsɛn 1 min} other{A minɛnsɛn {count} min}}",
+  "hoursAgo": "{count, plural, =1{A lɔrɔnsɛn 1 kɔnɔ} other{A lɔrɔnsɛn {count} kɔnɔ}}",
+  "daysAgo": "{count, plural, =1{A lɔrɔnsɛn 1 don} other{A lɔrɔnsɛn {count} don}}",
+  "updatedAt": "Ladilennen {time}",
+  "recordedAt": "Karannin {date}",
+  "requestedAt": "Sɔnnin {date}",
+  "executedAt": "Jɛkɔnnen {date}",
+  "systemStatus": "Sisitɛmu cogoya",
+  "systemStatusDesc": "Raspberry Pi ye jɛnsɛn na ye. App bɛna sɔnnin kɛ dɔrɔn ye.",
+  "soilMoisture": "Binkɛnɛ ji hakɛ",
+  "lastMeasurement": "Suman dakɛ",
+  "automation": "Yɛrɛma",
+  "irrigationState": "Ji bɔli cogoya",
+  "zonesCount": "{count, plural, =0{Yɔrɔ si tɛ yen} =1{Yɔrɔ 1} other{Yɔrɔw {count}}}",
+  "commandsCount": "{count, plural, =0{Bole si tɛ yen} =1{Bole 1} other{Bolew {count}}}",
+  "moistureTrend": "Binkɛnɛ ji hakɛ yɛlɛma",
+  "quickActions": "Bɛɛn nafle dɔwɛ",
+  "zones": "Yɔrɔw",
+  "zoneActive": "Bɛ baara la",
+  "zoneInactive": "Dabila",
+  "noMeasurementsYet": "Suman ma sɔrɔ foyi",
+  "selectZoneHint": "Yɔrɔ dɔ，选 ka ben yen ni kɛwalew dɔwɛ.",
+  "zonesTitle": "Ji bɔli yɔrɔw",
+  "noZonesConfigured": "Yɔrɔ si ma labɛn",
+  "noZonesConfiguredDesc": "Yɔrɔ dɔ labɛn ka jɛnɛ ni binkɛnɛ n'aw ye.",
+  "createZone": "Yɔrɔ dɔ",
+  "editZone": "Yɔrɔ jaabi",
+  "zoneName": "Yɔrɔw yɔrɔma",
+  "zoneNameHint": "Misali: Yɔrɔ Bau — Ji bɔli",
+  "zoneDescription": "Jigali",
+  "zoneDescriptionHint": "Bɛnbɛn, hakɛ bɛn, vanne…",
+  "zoneIsActive": "Yɔrɔ bɛ baara la",
+  "zoneCreated": "Yɔrɔ « {name} » dɔnɛ",
+  "zoneUpdated": "Yɔrɔ « {name} » lajɛ",
+  "zoneDeleted": "Yɔrɔ « {name} » jɔsi",
+  "deleteZoneTitle": "Yɔrɔ nin jɔsi wa?",
+  "deleteZoneMessage": "Yɔrɔ « {name} », sumanw, suguyaw ni bolew bɛna jɔsi. A ma fana segin.",
+  "searchZones": "Yɔrɔ dɔ ɲɛn",
+  "noZoneMatches": "Yɔrɔ dɔ ma bɛn",
+  "zoneDetails": "Yɔrɔ cɛsiriw",
+  "zoneNotFound": "Yɔrɔ ma bɛn",
+  "zoneIdentifier": "Tɔgɔ/kode",
+  "zoneCreatedOn": "Dɔnɛnen {date}",
+  "measurements": "Sumanw",
+  "settingsTab": "Suguyaw",
+  "commandsTab": "Bolew",
+  "historyTitle": "Sumanw ni kɛwalew",
+  "noMeasurements": "Suman si tɛ yen",
+  "noMeasurementsDesc": "Binkɛnɛ ma sɔrɔ sumanw ka fara yɔrɔ nin ye fɔlɔ.",
+  "period24h": "24 kɔnɔ",
+  "period7d": "7 don",
+  "period30d": "30 don",
+  "rawValue": "Jɔyɔrɔ kɔnɔ",
+  "percentValue": "YɔrɔPercentage",
+  "calibrated": "Kalibiri",
+  "notCalibrated": "Kalibiri sɔrɔma",
+  "outOfRange": "Jɔyɔrɔ bɛnna",
+  "source": "Yuubin",
+  "thresholdLegend": "Sɛnsɛn",
+  "chartEmptyLabel": "A kɔnɔ dɔ wɛn ko data tɛ yen",
+  "measurementCount": "{count, plural, =0{Suman si tɛ yen} =1{Suman 1} other{Sumanw {count}}}",
+  "irrigationTitle": "Ji bɔli ni yɛrɛma",
+  "automationEnabled": "Yɛrɛma bɛ baara la",
+  "automationDisabled": "Yɛrɛma dabila",
+  "automationUnknown": "Yɛrɛma ma labɛn",
+  "thresholds": "Binkɛnɛ ji hakɛ sɛnsɛnw",
+  "startThreshold": "Sɛnsɛn dɛmɛn",
+  "stopThreshold": "Sɛnsɛn dabilɛ",
+  "maxDuration": "Wakati makɛn",
+  "minInterval": "Wakati kɔnɔnw",
+  "saveSettings": "Sɛbɛn suguyaw",
+  "settingsSaved": "Suguyaw labɛnnen",
+  "settingsSaveFailed": "Suguyaw ma fana seebɛn",
+  "manualIrrigation": "Bololabaarakɛ",
+  "requestOpen": "Sɔnnin bɔgɔma",
+  "requestClose": "Tugu wajibi",
+  "confirmOpenTitle": "Sɔnnin ji bɔli « {name} » wa?",
+  "confirmOpenMessage": "Wajibi ka buteli da {zoneName} kosɔn?",
+  "commandCreated": "Sɔnnin labɛnnen — bɛ bɔta kɛ",
+  "commandFailed": "Sɔnnin ma fana seebɛn",
+  "executionUnavailable": "Jɔrɔnw bɛɛnna ma sɔrɔ",
+  "executionUnavailableDesc": "App bɛna sɛbɛn sɔnniw. Raspberry Pi bɛna kɛ a wa; nɛ ma sɔrɔ kontilolo la, bole bɛna tɛ « bɔta kɛ » la.",
+  "commands": "Bolew",
+  "noCommands": "Bole si tɛ yen",
+  "noCommandsDesc": "Ji bɔli sɔnniw bɛna jira yan.",
+  "autoModeOn": "Modu otomatiki",
+  "autoModeOff": "Modu bololabaara",
+  "durationMinutes": "{value} min",
+  "intervalHours": "{value} h",
+  "activityTitle": "Kɛwalew",
+  "noActivity": "Kɛwale tɛ yen",
+  "noActivityDesc": "Bolew kɛwalew ye tɛ ye kɔnɔ.",
+  "commandDetails": "Bole cɛsiriw",
+  "origin": "Yuubin",
+  "reason": "Sabu",
+  "errorMessage": "Fili hakɛ",
+  "statusPending": "Bɛ bɔta kɛ",
+  "statusExecuting": "Bɛ sen na",
+  "statusExecuted": "A jɛkɔn",
+  "statusFailed": "A bila",
+  "openValve": "Bɔgɔma",
+  "closeValve": "Datugu",
+  "originMobile": "App telefɔni",
+  "originAutomatic": "Otomatiki (Raspberry Pi)",
+  "notificationsTitle": "Kibaruya",
+  "noNotifications": "Kibaruya si tɛ yen",
+  "noNotificationsDesc": "Taamalenw (suman tɛmɛnen, bole bila) bɛna jira yan.",
+  "eventStaleMeasurement": "Suman tɛmɛnen — {zone}",
+  "eventPendingCommand": "Bole bɛ bɔta kɛ — {zone}",
+  "eventFailedCommand": "Bole a bila — {zone}",
+  "eventNoMeasurements": "Suman tɛ yen — {zone}",
+  "settingsTitle": "Suguya",
+  "appearance": "Jɛnɛmɛnɛ",
+  "theme": "Kuluya",
+  "themeLight": "Yeelen",
+  "themeDark": "Dibi",
+  "themeSystem": "Sisitɛmu",
+  "language": "Kan",
+  "languageFr": "Fransi",
+  "languageEn": "Angɛlɛsi",
+  "languageBm": "Bamanankan",
+  "dataSource": "Ladata yuubin",
+  "dataMode": "Ladata modu",
+  "dataModeSupabase": "Supabase (yanɲɛni)",
+  "dataModeInMemory": "Fɛnɲɛna (memwiri)",
+  "dataModeDesc": "I ka kan ka sugandi data bɔyɔrɔ. Supabase modu bɛ siri i ka instance ma (sigida walima yɔrɔ wɛrɛ). Demo modu bɛ na ni data fɛnw ye minnu ma deli ka sɛbɛn Supabase kɔnɔ.",
+  "demoScenarioSubtitle": "Data fɛnnu ma sɛbɛn Supabase kɔnɔ.",
+  "supabaseStatus": "Supabase sèrwɛri",
+  "configured": "Labɛnnen",
+  "notConfigured": "Ma labɛn",
+  "notConfiguredLocalOnly": "Ma labɛn — yanɲɛni dɔrɔn",
+  "networkStatus": "Telefɔni jɛnsɛnni",
+  "networkStatusDesc": "Wi-Fi jɛnsɛnni ye Supabase walima Raspberry Pi dɔrɔn te foyi.",
+  "rpiStatus": "Raspberry Pi (kontilolo)",
+  "rpiUnknown": "Cogoya ma lɔn",
+  "rpiUnknownDesc": "Heartbeat yuubin tɛ yen fɔlɔ: kontilolo cogoya ma bɛ na kɛ.",
+  "version": "Wɛrisɔn",
+  "diagnostics": "Jɛnɛmɛnɛ lajɛli",
+  "about": "Koow kan",
+  "sertechDesc": "Sɛnɛ jateminɛ — NextDev",
+  "profile": "Ɲɔgɔ",
+  "profileUnavailable": "Ɲɔgɔ tɛ yen",
+  "demoMode": "Fɛnɲɛna modu",
+  "demoScenario": "Fɛnɲɛna senario",
+  "demoScenarioDesc": "Senario bɛ dɔrɔn fɛnɲɛna modu la: bɛna kɛ cɛsiri bɛɛn bɛɛn na fana jɔrɔnw makɛn.",
+  "demoModeEnabled": "Data mɔgɔ bɛ baara la",
+  "fieldRequired": "A bɛna sɔrɔ",
+  "nameTooLong": "80 kaara a maxima",
+  "thresholdRange": "Jɔyɔrɔ ka dɔ fɛn 0 ni 100 ye",
+  "hysteresisInvalid": "Sɛnsɛn dɛmɛn ka dɔ ka ye kɛ a sɛnsɛn dabilɛ ka fɛn ye",
+  "durationRange": "Wakati ka dɔ fɛn 30 sɔgɔma ni 6 lɔrɔ ye",
+  "intervalRange": "Wakati kɔnɔnw ka dɔ fɛn 0 ni 24 lɔrɔ ye",
+  "invalidNumber": "Jɔyɔrɔ ma foyi",
+  "savedSuccess": "Ɲɛnɛkɛn labɛnnen",
+  "deletedSuccess": "A jɔsi",
+  "actionFailed": "A fana tɛ lajɛ",
+  "signIn": "Don",
+  "signUp": "Kontu dɔ",
+  "signOut": "Bɔ",
+  "email": "Imɛli adrɛsi",
+  "password": "Kunnafoni",
+  "displayName": "Tɔgɔ",
+  "sessionRequired": "Session bɛna sɔrɔ",
+  "sessionRequiredDesc": "Supabase data bɛ ka ɲɔgɔn ye (RLS). Don ka i yɔrɔw ye.",
+  "invalidCredentials": "Dɔnni ma bɛn",
+  "authError": "Dɔnni ma fana kɛ",
+  "noAccount": "Kontu tɛ yen fɔlɔ?",
+  "haveAccount": "Kontu bɛ yen?",
+  "emailInvalid": "Imɛli adrɛsi ma bɛn",
+  "passwordTooShort": "Karafɛ 6 ka dɔ",
+  "signedInAs": "Donnen {name} ye",
+  "controllerUnknown": "Kontilolo: cogoya ma lɔn",
+  "dataFresh": "Data kuraw",
+  "dataStale": "Data tɛmɛnenw",
+  "noDataReceived": "Data si ma sɔrɔ",
+  "viewHistory": "Kɛwalew ye",
+  "openCamera": "Kamera da",
+  "configureIrrigation": "Ji bɔli labɛn",
+  "latestCommand": "Bole laban",
+  "noCommand": "Bole si tɛ yen",
+  "requestWatering": "Sɔnnin ji bɔli",
+  "measurementsTab": "Sumanw",
+  "scenarioNominal": "Sɛnɛyɔrɔ bɛnnen",
+  "scenarioStaleSensor": "Kɔnɔma bɛ dabila",
+  "scenarioNoMeasurements": "Suman tɛ yen",
+  "scenarioPendingCommands": "Bolew bɛ bɔta kɛ",
+  "scenarioFailedCommand": "Bole bila",
+  "scenarioEmptyInstallation": "Sɛnɛyɔrɔ tɛ yen",
+  "currentScenario": "Senario bɛ baara la",
+  "confirmCloseTitle": "Ji bɔli dabila?",
+  "confirmCloseMessage": "Wajibi ka buteli tugu {zoneName} kosɔn?",
+  "recentCommands": "Bole kuraw",
+  "lastUpdate": "Labɛn laban",
+  "average": "Cɛmancɛ",
+  "minimum": "Dɔgɔman",
+  "maximum": "Camancɛ",
+  "readings": "Sumanw",
+  "cmdType": "Bole suguya",
+  "noReason": "Sabu si tɛ yen",
+  "noError": "Fili si tɛ yen",
+  "systemHint": "Raspberry Pi ye baara kɛyɔrɔ ye.",
+  "cameraTitle": "Kamera",
+  "cameraDesc": "Jira ma sɔrɔ. Fɛn si ma don.",
+  "cameraOfflineDesc": "App ma bɛn kamera ma. Ni fɛn bɛ yen, Raspberry Pi bɛna a jira.",
+  "account": "Kontu",
+  "aboutApp": "Sertech ko la",
+  "notLoggedIn": "Ma don",
+  "tapToSignIn": "Don kɛ ka don",
+  "localMode": "Yɔrɔ kɔnɔ",
+  "systemRealtimeHint": "Data bɛ kuraw bɔ tuma o tuma Raspberry Pi fɛ.",
+  "@minutesAgo": {
+    "description": "Placeholder(s) for 'minutesAgo'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "description": "Placeholder(s) for 'hoursAgo'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "description": "Placeholder(s) for 'daysAgo'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@updatedAt": {
+    "description": "Placeholder(s) for 'updatedAt'.",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@recordedAt": {
+    "description": "Placeholder(s) for 'recordedAt'.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@requestedAt": {
+    "description": "Placeholder(s) for 'requestedAt'.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@executedAt": {
+    "description": "Placeholder(s) for 'executedAt'.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@zonesCount": {
+    "description": "Placeholder(s) for 'zonesCount'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@commandsCount": {
+    "description": "Placeholder(s) for 'commandsCount'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@zoneCreated": {
+    "description": "Placeholder(s) for 'zoneCreated'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@zoneUpdated": {
+    "description": "Placeholder(s) for 'zoneUpdated'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@zoneDeleted": {
+    "description": "Placeholder(s) for 'zoneDeleted'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@deleteZoneMessage": {
+    "description": "Placeholder(s) for 'deleteZoneMessage'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@zoneCreatedOn": {
+    "description": "Placeholder(s) for 'zoneCreatedOn'.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@measurementCount": {
+    "description": "Placeholder(s) for 'measurementCount'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@confirmOpenTitle": {
+    "description": "Placeholder(s) for 'confirmOpenTitle'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@confirmOpenMessage": {
+    "description": "Placeholder(s) for 'confirmOpenMessage'.",
+    "placeholders": {
+      "zoneName": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "description": "Placeholder(s) for 'durationMinutes'.",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "@intervalHours": {
+    "description": "Placeholder(s) for 'intervalHours'.",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "@eventStaleMeasurement": {
+    "description": "Placeholder(s) for 'eventStaleMeasurement'.",
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      }
+    }
+  },
+  "@eventPendingCommand": {
+    "description": "Placeholder(s) for 'eventPendingCommand'.",
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      }
+    }
+  },
+  "@eventFailedCommand": {
+    "description": "Placeholder(s) for 'eventFailedCommand'.",
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      }
+    }
+  },
+  "@eventNoMeasurements": {
+    "description": "Placeholder(s) for 'eventNoMeasurements'.",
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      }
+    }
+  },
+  "@signedInAs": {
+    "description": "Placeholder(s) for 'signedInAs'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@confirmCloseMessage": {
+    "description": "Placeholder(s) for 'confirmCloseMessage'.",
+    "placeholders": {
+      "zoneName": {
+        "type": "String"
+      }
+    }
+  },
+  "modeManualRequired": "Mode manuwal wajib",
+  "enableManualModeDesc": "Ka fana manuwal daminɛ, i ka wajibiya ka otomatiki dabila.",
+  "switchToManual": "Tɛmɛ manuwal ma",
+  "startIrrigation": "Daminɛ fana wa?",
+  "durationMinutesLabel": "Waati (miniti)",
+  "maxDurationLabel": "Waati max bɔlen",
+  "autoStopAtEnd": "Fana bɛ jɔ a yɛrɛma waati ban na.",
+  "invalidDuration": "Waati ma ɲɛ",
+  "durationExceedsMax": "Waati tɛmɛna dan kan",
+  "stopIrrigation": "Dabila fana",
+  "stopIrrigationConfirm": "Dabila fana {zoneName} la?",
+  "onboardingSkip": "Tɛmɛ",
+  "onboardingNext": "Nata",
+  "onboardingGetStarted": "Daminɛ",
+  "onboardingTitle1": "Aw kɛ yɔrɔw lajɛ",
+  "onboardingDesc1": "Aw bɛ se ka dugukolo ji hakɛ lajɛ ani aw ka masin ka cogoya ye kelen kan.",
+  "onboardingTitle2": "Ji bɔli nɔgɔya la",
+  "onboardingDesc2": "Aw bɛ se ka yɔrɔw ɲɛnabɔ, ji bɔli daminɛ bololabaarakɛ la walima ka otomatik kɛ.",
+  "registerSubtitle": "KA DON SERTECH",
+  "registerTitle": "Aw bɛ sɛnɛ ka ɲɛ, ɲɔgɔn fɛ.",
+  "registerDesc": "Aw ye jatebɔsɛbɛn da ka aw ka yɔrɔw labɛn ani aw ka ji bɔli masin ɲɛnabɔ.",
+  "confirmPassword": "Daɲɛ dogo caman",
+  "createAccount": "Jatebɔsɛbɛn da",
+  "alreadyHaveAccount": "Aw already have account?",
+  "passwordMismatch": "Daɲɛ dogo tɛ kelen ye",
+  "loginSubtitle": "BIENVENUE SERTECH",
+  "loginTitle": "Aw bisimila!",
+  "loginDesc": "Aw ye don ka aw ka yɔrɔw ye, dugukolo ji lajɛ ani ji bɔli kɛ.",
+  "forgotPassword": "Aw ye daɲɛ dogo tunu wa?",
+  "noAccountText": "Jatebɔsɛbɛn tɛ aw bolo wa?",
+  "createAccountLink": "Jatebɔsɛbɛn da",
+  "authSubtitle": "BIENVENUE SERTECH",
+  "onboardingTitle3": "Otomatize kaɲan",
+  "onboardingDesc3": "Dabɔ ji hakɛ sigiyɔrɔw ani kɛ ji bɔli ye waati ɲuman na.",
+  "alreadyHaveAccountText": "I ye jatebɔla sisan wa?",
+  "signInLink": "Don tɛmɛ",
+  "passwordsDoNotMatch": "Daɲɛ tɛ kelen ye"
+}

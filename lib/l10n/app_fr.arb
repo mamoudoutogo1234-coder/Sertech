@@ -1,0 +1,490 @@
+{
+  "@@locale": "fr",
+  "appName": "Sertech",
+  "navAccueil": "Accueil",
+  "navZones": "Zones",
+  "navIrrigation": "Irrigation",
+  "navCamera": "Caméra",
+  "navActivity": "Activité",
+  "dashboardTitle": "Tableau de bord",
+  "settings": "Paramètres",
+  "notifications": "Notifications",
+  "back": "Retour",
+  "retry": "Réessayer",
+  "cancel": "Annuler",
+  "save": "Enregistrer",
+  "delete": "Supprimer",
+  "edit": "Modifier",
+  "add": "Ajouter",
+  "close": "Fermer",
+  "confirm": "Confirmer",
+  "refresh": "Actualiser",
+  "search": "Rechercher",
+  "viewAll": "Voir tout",
+  "loading": "Chargement…",
+  "error": "Erreur",
+  "unknown": "Inconnu",
+  "notAvailable": "Non disponible",
+  "none": "Aucun",
+  "all": "Toutes",
+  "yes": "Oui",
+  "no": "Non",
+  "noData": "—",
+  "unknownState": "État inconnu",
+  "offline": "Hors ligne",
+  "online": "En ligne",
+  "noInstallationConfigured": "Aucune installation configurée",
+  "noInstallationConfiguredDesc": "Les zones de culture apparaîtront ici dès qu'elles seront enregistrées.",
+  "noRecentActivity": "Aucune activité récente",
+  "noRecentActivityDesc": "Les commandes d'irrigation apparaîtront ici.",
+  "genericErrorTitle": "Impossible de charger les données",
+  "supabaseErrorHint": "Le mode Supabase ne bascule jamais sur des données fictives.",
+  "justNow": "À l'instant",
+  "minutesAgo": "{count, plural, =1{Il y a 1 min} other{Il y a {count} min}}",
+  "hoursAgo": "{count, plural, =1{Il y a 1 h} other{Il y a {count} h}}",
+  "daysAgo": "{count, plural, =1{Il y a 1 jour} other{Il y a {count} jours}}",
+  "updatedAt": "Mis à jour {time}",
+  "recordedAt": "Mesuré le {date}",
+  "requestedAt": "Demandé le {date}",
+  "executedAt": "Exécuté le {date}",
+  "systemStatus": "État du système",
+  "systemStatusDesc": "Le Raspberry Pi reste l'autorité d'exécution. L'application ne fait que demander des commandes.",
+  "soilMoisture": "Humidité du sol",
+  "lastMeasurement": "Dernière mesure",
+  "automation": "Automatisation",
+  "irrigationState": "État de l'arrosage",
+  "zonesCount": "{count, plural, =0{Aucune zone} =1{1 zone} other{{count} zones}}",
+  "commandsCount": "{count, plural, =0{Aucune commande} =1{1 commande} other{{count} commandes}}",
+  "moistureTrend": "Évolution de l'humidité",
+  "quickActions": "Actions rapides",
+  "zones": "Zones",
+  "zoneActive": "Active",
+  "zoneInactive": "Inactive",
+  "noMeasurementsYet": "Aucune mesure enregistrée",
+  "selectZoneHint": "Sélectionnez une zone pour voir son historique.",
+  "zonesTitle": "Zones de culture",
+  "noZonesConfigured": "Aucune zone configurée",
+  "noZonesConfiguredDesc": "Créez une zone pour la rattacher à une culture et à son capteur.",
+  "createZone": "Nouvelle zone",
+  "editZone": "Modifier la zone",
+  "zoneName": "Nom de la zone",
+  "zoneNameHint": "Ex. Zone Nord — Maraîchage",
+  "zoneDescription": "Description",
+  "zoneDescriptionHint": "Culture, type de sol, vanne associée…",
+  "zoneIsActive": "Zone active",
+  "zoneCreated": "Zone « {name} » créée",
+  "zoneUpdated": "Zone « {name} » mise à jour",
+  "zoneDeleted": "Zone « {name} » supprimée",
+  "deleteZoneTitle": "Supprimer cette zone ?",
+  "deleteZoneMessage": "La zone « {name} », ses mesures, ses réglages et ses commandes seront supprimés. Cette action est irréversible.",
+  "searchZones": "Rechercher une zone",
+  "noZoneMatches": "Aucune zone ne correspond",
+  "zoneDetails": "Détails de la zone",
+  "zoneNotFound": "Zone introuvable",
+  "zoneIdentifier": "Identifiant",
+  "zoneCreatedOn": "Créée le {date}",
+  "measurements": "Mesures",
+  "settingsTab": "Réglages",
+  "commandsTab": "Commandes",
+  "historyTitle": "Mesures et historique",
+  "noMeasurements": "Aucune mesure",
+  "noMeasurementsDesc": "Aucun capteur n'a encore écrit de mesure pour cette zone.",
+  "period24h": "24 h",
+  "period7d": "7 jours",
+  "period30d": "30 jours",
+  "rawValue": "Valeur brute",
+  "percentValue": "Pourcentage",
+  "calibrated": "Calibré",
+  "notCalibrated": "Non calibré",
+  "outOfRange": "Valeur hors plage",
+  "source": "Source",
+  "thresholdLegend": "Seuil",
+  "chartEmptyLabel": "Aucune donnée à afficher sur cette période",
+  "measurementCount": "{count, plural, =0{Aucune mesure} =1{1 mesure} other{{count} mesures}}",
+  "irrigationTitle": "Irrigation et automatisation",
+  "automationEnabled": "Automatisation activée",
+  "automationDisabled": "Automatisation désactivée",
+  "automationUnknown": "Automatisation non configurée",
+  "thresholds": "Seuils d'humidité",
+  "startThreshold": "Seuil de démarrage",
+  "stopThreshold": "Seuil d'arrêt",
+  "maxDuration": "Durée maximale",
+  "minInterval": "Intervalle minimum",
+  "saveSettings": "Enregistrer les réglages",
+  "settingsSaved": "Réglages enregistrés",
+  "settingsSaveFailed": "Échec de l'enregistrement des réglages",
+  "manualIrrigation": "Commande manuelle",
+  "requestOpen": "Demander l'ouverture",
+  "requestClose": "Demander la fermeture",
+  "confirmOpenTitle": "Demander l'arrosage de « {name} » ?",
+  "confirmOpenMessage": "Demander l'ouverture de la vanne pour {zoneName} ?",
+  "commandCreated": "Demande enregistrée — en attente d'exécution",
+  "commandFailed": "La demande n'a pas pu être enregistrée",
+  "executionUnavailable": "Exécution matérielle non disponible",
+  "executionUnavailableDesc": "L'application enregistre vos demandes. Le Raspberry Pi les exécute ; sans contrôleur connecté, une commande reste « en attente ».",
+  "commands": "Commandes",
+  "noCommands": "Aucune commande",
+  "noCommandsDesc": "Les demandes d'arrosage apparaîtront ici.",
+  "autoModeOn": "Mode automatique",
+  "autoModeOff": "Mode manuel",
+  "durationMinutes": "{value} min",
+  "intervalHours": "{value} h",
+  "activityTitle": "Activité",
+  "noActivity": "Aucune activité",
+  "noActivityDesc": "L'historique des commandes est vide.",
+  "commandDetails": "Détail de la commande",
+  "origin": "Origine",
+  "reason": "Motif",
+  "errorMessage": "Message d'erreur",
+  "statusPending": "En attente",
+  "statusExecuting": "En cours",
+  "statusExecuted": "Exécutée",
+  "statusFailed": "Échec",
+  "openValve": "Ouverture",
+  "closeValve": "Fermeture",
+  "originMobile": "Application mobile",
+  "originAutomatic": "Automatique (Raspberry Pi)",
+  "notificationsTitle": "Notifications",
+  "noNotifications": "Aucune notification",
+  "noNotificationsDesc": "Les événements réels (mesures périmées, commandes échouées) apparaîtront ici.",
+  "eventStaleMeasurement": "Mesure périmée — {zone}",
+  "eventPendingCommand": "Commande en attente — {zone}",
+  "eventFailedCommand": "Commande en échec — {zone}",
+  "eventNoMeasurements": "Aucune mesure — {zone}",
+  "settingsTitle": "Paramètres",
+  "appearance": "Apparence",
+  "theme": "Thème",
+  "themeLight": "Clair",
+  "themeDark": "Sombre",
+  "themeSystem": "Système",
+  "language": "Langue",
+  "languageFr": "Français",
+  "languageEn": "Anglais",
+  "languageBm": "Bamanankan",
+  "dataSource": "Source de données",
+  "dataMode": "Mode de données",
+  "dataModeSupabase": "Supabase (local)",
+  "dataModeInMemory": "Démonstration (mémoire)",
+  "dataModeDesc": "Choisissez la source des données. Le mode Supabase se connecte à votre instance (locale ou distante). Le mode Démonstration utilise des données fictives et ne modifie jamais Supabase.",
+  "demoScenarioSubtitle": "Données fictives, jamais écrites dans Supabase.",
+  "supabaseStatus": "Serveur Supabase",
+  "configured": "Configuré",
+  "notConfigured": "Non configuré",
+  "notConfiguredLocalOnly": "Non configuré — mode local uniquement",
+  "networkStatus": "Connectivité du téléphone",
+  "networkStatusDesc": "L'accès au Wi-Fi n'indique ni la disponibilité de Supabase ni celle du Raspberry Pi.",
+  "rpiStatus": "Raspberry Pi (contrôleur)",
+  "rpiUnknown": "État inconnu",
+  "rpiUnknownDesc": "Aucune source de heartbeat n'existe encore : l'état du contrôleur ne peut pas être affirmé.",
+  "version": "Version",
+  "diagnostics": "Diagnostics",
+  "about": "À propos",
+  "sertechDesc": "Supervision agricole — NextDev",
+  "profile": "Profil",
+  "profileUnavailable": "Aucun profil utilisateur connecté",
+  "demoMode": "Mode démonstration",
+  "demoScenario": "Scénario de démonstration",
+  "demoScenarioDesc": "Le scénario n'existe qu'en mode démonstration : il permet de parcourir tous les états de l'interface sans matériel.",
+  "demoModeEnabled": "Données fictives actives",
+  "fieldRequired": "Ce champ est obligatoire",
+  "nameTooLong": "80 caractères maximum",
+  "thresholdRange": "Valeur entre 0 et 100",
+  "hysteresisInvalid": "Le seuil de démarrage doit être inférieur ou égal au seuil d'arrêt",
+  "durationRange": "Durée entre 30 secondes et 6 heures",
+  "intervalRange": "Intervalle entre 0 et 24 heures",
+  "invalidNumber": "Nombre invalide",
+  "savedSuccess": "Modifications enregistrées",
+  "deletedSuccess": "Élément supprimé",
+  "actionFailed": "L'opération a échoué",
+  "signIn": "Se connecter",
+  "signUp": "Créer un compte",
+  "signOut": "Se déconnecter",
+  "email": "Adresse e-mail",
+  "password": "Mot de passe",
+  "displayName": "Nom affiché",
+  "sessionRequired": "Session requise",
+  "sessionRequiredDesc": "Les données Supabase sont isolées par utilisateur (RLS). Connectez-vous pour consulter vos zones.",
+  "invalidCredentials": "Identifiants invalides",
+  "authError": "Authentification impossible",
+  "noAccount": "Pas encore de compte ?",
+  "haveAccount": "Déjà un compte ?",
+  "emailInvalid": "Adresse e-mail invalide",
+  "passwordTooShort": "6 caractères minimum",
+  "signedInAs": "Connecté en tant que {name}",
+  "controllerUnknown": "Contrôleur : état inconnu",
+  "dataFresh": "Données récentes",
+  "dataStale": "Données périmées",
+  "noDataReceived": "Aucune donnée reçue",
+  "viewHistory": "Voir l'historique",
+  "openCamera": "Ouvrir la caméra",
+  "configureIrrigation": "Configurer l'irrigation",
+  "latestCommand": "Dernière commande",
+  "noCommand": "Aucune commande",
+  "requestWatering": "Demander l'arrosage",
+  "measurementsTab": "Mesures",
+  "scenarioNominal": "Installation nominale",
+  "scenarioStaleSensor": "Capteur silencieux",
+  "scenarioNoMeasurements": "Sans mesures",
+  "scenarioPendingCommands": "Commandes en attente",
+  "scenarioFailedCommand": "Commande en échec",
+  "scenarioEmptyInstallation": "Installation vide",
+  "currentScenario": "Scénario actif",
+  "confirmCloseTitle": "Arrêter l'arrosage ?",
+  "confirmCloseMessage": "Demander la fermeture de la vanne pour {zoneName} ?",
+  "recentCommands": "Commandes récentes",
+  "lastUpdate": "Dernière mise à jour",
+  "average": "Moyenne",
+  "minimum": "Minimum",
+  "maximum": "Maximum",
+  "readings": "Relevés",
+  "cmdType": "Type de commande",
+  "noReason": "Aucun motif",
+  "noError": "Aucune erreur",
+  "systemHint": "Le Raspberry Pi est l'autorité d'exécution.",
+  "cameraTitle": "Caméra",
+  "cameraDesc": "Aperçu non disponible dans cette version. Aucun flux en direct n'est chargé.",
+  "cameraOfflineDesc": "L'application ne se connecte pas directement à la caméra. Si un flux existe, il sera géré par le Raspberry Pi.",
+  "account": "Compte",
+  "aboutApp": "À propos de Sertech",
+  "notLoggedIn": "Non connecté",
+  "tapToSignIn": "Appuyer pour se connecter",
+  "localMode": "Mode local",
+  "systemRealtimeHint": "Données actualisées à chaque mesure reçue du Raspberry Pi.",
+  "@minutesAgo": {
+    "description": "Placeholder(s) for 'minutesAgo'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@hoursAgo": {
+    "description": "Placeholder(s) for 'hoursAgo'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@daysAgo": {
+    "description": "Placeholder(s) for 'daysAgo'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@updatedAt": {
+    "description": "Placeholder(s) for 'updatedAt'.",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "@recordedAt": {
+    "description": "Placeholder(s) for 'recordedAt'.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@requestedAt": {
+    "description": "Placeholder(s) for 'requestedAt'.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@executedAt": {
+    "description": "Placeholder(s) for 'executedAt'.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@zonesCount": {
+    "description": "Placeholder(s) for 'zonesCount'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@commandsCount": {
+    "description": "Placeholder(s) for 'commandsCount'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@zoneCreated": {
+    "description": "Placeholder(s) for 'zoneCreated'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@zoneUpdated": {
+    "description": "Placeholder(s) for 'zoneUpdated'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@zoneDeleted": {
+    "description": "Placeholder(s) for 'zoneDeleted'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@deleteZoneMessage": {
+    "description": "Placeholder(s) for 'deleteZoneMessage'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@zoneCreatedOn": {
+    "description": "Placeholder(s) for 'zoneCreatedOn'.",
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "@measurementCount": {
+    "description": "Placeholder(s) for 'measurementCount'.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@confirmOpenTitle": {
+    "description": "Placeholder(s) for 'confirmOpenTitle'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@confirmOpenMessage": {
+    "description": "Placeholder(s) for 'confirmOpenMessage'.",
+    "placeholders": {
+      "zoneName": {
+        "type": "String"
+      }
+    }
+  },
+  "@durationMinutes": {
+    "description": "Placeholder(s) for 'durationMinutes'.",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "@intervalHours": {
+    "description": "Placeholder(s) for 'intervalHours'.",
+    "placeholders": {
+      "value": {
+        "type": "String"
+      }
+    }
+  },
+  "@eventStaleMeasurement": {
+    "description": "Placeholder(s) for 'eventStaleMeasurement'.",
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      }
+    }
+  },
+  "@eventPendingCommand": {
+    "description": "Placeholder(s) for 'eventPendingCommand'.",
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      }
+    }
+  },
+  "@eventFailedCommand": {
+    "description": "Placeholder(s) for 'eventFailedCommand'.",
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      }
+    }
+  },
+  "@eventNoMeasurements": {
+    "description": "Placeholder(s) for 'eventNoMeasurements'.",
+    "placeholders": {
+      "zone": {
+        "type": "String"
+      }
+    }
+  },
+  "@signedInAs": {
+    "description": "Placeholder(s) for 'signedInAs'.",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "@confirmCloseMessage": {
+    "description": "Placeholder(s) for 'confirmCloseMessage'.",
+    "placeholders": {
+      "zoneName": {
+        "type": "String"
+      }
+    }
+  },
+  "modeManualRequired": "Le mode manuel est nécessaire",
+  "enableManualModeDesc": "Pour lancer un arrosage manuel, vous devez désactiver l'automatisation.",
+  "switchToManual": "Passer en mode manuel",
+  "startIrrigation": "Démarrer un arrosage ?",
+  "durationMinutesLabel": "Durée (minutes)",
+  "maxDurationLabel": "Durée maximale autorisée",
+  "autoStopAtEnd": "L'arrosage s'arrêtera automatiquement à la fin de la durée autorisée.",
+  "invalidDuration": "Durée invalide",
+  "durationExceedsMax": "Durée supérieure à la limite autorisée",
+  "stopIrrigation": "Arrêter l'arrosage",
+  "stopIrrigationConfirm": "Arrêter l'arrosage de {zoneName} ?",
+  "onboardingSkip": "Passer",
+  "onboardingNext": "Suivant",
+  "onboardingGetStarted": "Commencer",
+  "onboardingTitle1": "Surveillez vos parcelles",
+  "onboardingDesc1": "Gardez un œil sur l'humidité de vos zones et suivez l'état de votre installation en un coup d'œil.",
+  "onboardingTitle2": "Irriguez simplement",
+  "onboardingDesc2": "Suivez vos zones, lancez un arrosage manuel ou laissez-vous guider par l'automatisation selon vos besoins.",
+  "registerSubtitle": "REJOIGNEZ SERTECH",
+  "registerTitle": "Cultivons mieux, ensemble.",
+  "registerDesc": "Créez votre compte pour organiser vos zones et gérer votre système d'irrigation intelligent.",
+  "confirmPassword": "Confirmer le mot de passe",
+  "createAccount": "Créer mon compte",
+  "alreadyHaveAccount": "Déjà inscrit ?",
+  "passwordMismatch": "Les mots de passe ne correspondent pas",
+  "loginSubtitle": "BIENVENUE SUR SERTECH",
+  "loginTitle": "Heureux de vous revoir !",
+  "loginDesc": "Connectez-vous pour retrouver vos zones, surveiller l'humidité du sol et piloter votre irrigation.",
+  "forgotPassword": "Mot de passe oublié ?",
+  "noAccountText": "Pas encore de compte ?",
+  "createAccountLink": "Créer un compte",
+  "authSubtitle": "BIENVENUE SUR SERTECH",
+  "onboardingTitle3": "Automatisez intelligemment",
+  "onboardingDesc3": "Définissez des seuils d'humidité et laissez l'irrigation se déclencher au bon moment.",
+  "alreadyHaveAccountText": "Déjà un compte ?",
+  "signInLink": "Se connecter",
+  "passwordsDoNotMatch": "Les mots de passe ne correspondent pas"
+}

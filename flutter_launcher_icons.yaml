@@ -1,0 +1,10 @@
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: assets/brand/sertech_mark.png
+  min_sdk_android: 21
+  remove_alpha_ios: true
+  adaptive_icon_background: "#0F7C3E"
+  adaptive_icon_foreground: assets/brand/sertech_mark.png
+  adaptive_icon_foreground_inset: 16
+  adaptive_icon_monochrome: assets/brand/sertech_mark.png

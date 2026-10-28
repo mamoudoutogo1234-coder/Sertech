@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zones</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-destructive-foreground: var(--destructive-foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-sans: var(--font-sans);
+        --font-heading: var(--font-heading, var(--font-sans));
+        --font-serif: var(--font-serif);
+        --font-mono: var(--font-mono);
+      }
+
+      @theme {
+        --radius-xs: calc(var(--radius) - 8px);
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+        --radius-2xl: calc(var(--radius) + 8px);
+        --radius-3xl: calc(var(--radius) + 16px);
+        --radius-4xl: calc(var(--radius) + 24px);
+      }
+
+      * {
+        corner-shape: var(--shape, round);
+      }
+
+      .rounded-full,
+      .rounded-none,
+      .rounded-t-full,
+      .rounded-t-none,
+      .rounded-r-full,
+      .rounded-r-none,
+      .rounded-b-full,
+      .rounded-b-none,
+      .rounded-l-full,
+      .rounded-l-none,
+      .rounded-s-full,
+      .rounded-s-none,
+      .rounded-e-full,
+      .rounded-e-none,
+      .rounded-tl-full,
+      .rounded-tl-none,
+      .rounded-tr-full,
+      .rounded-tr-none,
+      .rounded-bl-full,
+      .rounded-bl-none,
+      .rounded-br-full,
+      .rounded-br-none,
+      .rounded-ss-full,
+      .rounded-ss-none,
+      .rounded-se-full,
+      .rounded-se-none,
+      .rounded-es-full,
+      .rounded-es-none,
+      .rounded-ee-full,
+      .rounded-ee-none {
+        corner-shape: round;
+      }
+
+      @utility rounded-* {
+        border-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-t-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-r-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-b-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-l-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tl-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tr-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-bl-* {
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-br-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-s-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-e-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ss-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-se-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-es-* {
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ee-* {
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground font-sans;
+        }
+      }
+
+      :root {
+        --shape: squircle;
+        --shape-multiplier: 1;
+
+        --background: #f6f8f5;
+        --foreground: #13201a;
+        --primary: #0a723b;
+        --primary-foreground: #ffffff;
+        --secondary: #e4efe7;
+        --secondary-foreground: #0a723b;
+        --muted: #edf2ee;
+        --muted-foreground: #5e6b63;
+        --accent: #e2f1fa;
+        --accent-foreground: #0b5c86;
+        --destructive: #c62828;
+        --destructive-foreground: #ffffff;
+        --card: #ffffff;
+        --card-foreground: #13201a;
+        --popover: #ffffff;
+        --popover-foreground: #13201a;
+        --border: #dce5de;
+        --input: #f1f5f2;
+        --ring: #0a723b;
+        --chart-1: #0a723b;
+        --chart-2: #2f9bd6;
+        --chart-3: #8bc34a;
+        --chart-4: #b5833a;
+        --chart-5: #5c7a6a;
+
+        --font-sans: "Inter", sans-serif;
+        --font-heading: "Inter", sans-serif;
+        --font-serif: "Playfair Display", serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --radius: 0.875rem;
+      }
+
+      @supports (corner-shape: squircle) {
+        :root {
+          --shape-multiplier: 2.5;
+        }
+      }
+
+      /* Prevent layout shift for icons without explicit dimensions */
+      iconify-icon:not([width]):not([height]) {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background text-foreground pb-24">
+      <header class="px-5 pt-6 pb-4 flex items-center justify-between">
+        <div>
+          <p class="text-sm text-muted-foreground">Exploitation Les Coteaux</p>
+          <h1 class="font-heading text-2xl font-bold">Zones</h1>
+        </div>
+        <button
+          class="size-10 rounded-xl bg-card border border-border flex items-center justify-center"
+          aria-label="Ajouter une zone"
+        >
+          <iconify-icon icon="ph:plus" width="20" height="20"></iconify-icon>
+        </button>
+      </header>
+      <main class="px-5 space-y-4">
+        <label class="flex items-center gap-2 bg-input border border-border rounded-xl px-3 h-11"
+          ><iconify-icon
+            icon="ph:magnifying-glass"
+            class="text-muted-foreground"
+            width="20"
+            height="20"
+          ></iconify-icon
+          ><input
+            type="search"
+            class="flex-1 bg-transparent outline-none text-sm placeholder:text-muted-foreground"
+            placeholder="Rechercher une zone ou une culture"
+        /></label>
+        <div class="flex gap-2 overflow-x-auto">
+          <button
+            class="shrink-0 px-3.5 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-medium"
+          >
+            Toutes</button
+          ><button
+            class="shrink-0 px-3.5 py-1.5 rounded-full bg-card border border-border text-sm font-medium"
+          >
+            Actives</button
+          ><button
+            class="shrink-0 px-3.5 py-1.5 rounded-full bg-card border border-border text-sm font-medium"
+          >
+            Inactives</button
+          ><button
+            class="shrink-0 px-3.5 py-1.5 rounded-full bg-card border border-border text-sm font-medium"
+          >
+            Alertes
+          </button>
+        </div>
+        <section class="grid grid-cols-3 gap-3">
+          <div class="bg-card rounded-2xl border border-border p-3 shadow-sm">
+            <p class="text-xs text-muted-foreground">Total</p>
+            <p class="font-heading text-xl font-bold mt-1">8</p>
+          </div>
+          <div class="bg-card rounded-2xl border border-border p-3 shadow-sm">
+            <p class="text-xs text-muted-foreground">Irrigation</p>
+            <p class="font-heading text-xl font-bold mt-1 text-chart-2">2</p>
+          </div>
+          <div class="bg-card rounded-2xl border border-border p-3 shadow-sm">
+            <p class="text-xs text-muted-foreground">Alertes</p>
+            <p class="font-heading text-xl font-bold mt-1 text-destructive">1</p>
+          </div>
+        </section>
+        <article class="bg-card rounded-2xl border border-border p-4 shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <h2 class="font-heading text-base font-semibold truncate">Zone B2</h2>
+                <span
+                  class="inline-flex items-center gap-1 text-xs font-medium rounded-full px-2 py-0.5 bg-accent text-accent-foreground"
+                  ><span class="size-1.5 rounded-full bg-chart-2"></span>Irrigation</span
+                >
+              </div>
+              <p class="text-sm text-muted-foreground mt-0.5">Maïs · 12,4 ha</p>
+            </div>
+            <div class="text-right">
+              <p class="font-heading text-2xl font-bold tabular-nums">41 %</p>
+              <p class="text-xs text-muted-foreground">Humidité sol</p>
+            </div>
+          </div>
+          <div class="h-2 rounded-full bg-muted overflow-hidden mt-3">
+            <div class="h-full w-[41%] bg-chart-2 rounded-full"></div>
+          </div>
+          <div class="flex items-center justify-between mt-3">
+            <p class="text-xs text-muted-foreground flex items-center gap-1">
+              <iconify-icon icon="ph:clock" width="14" height="14"></iconify-icon>Relevé il y a 3
+              min
+            </p>
+            <button
+              class="inline-flex items-center gap-1.5 rounded-xl bg-destructive text-destructive-foreground px-3 py-2 text-sm font-semibold"
+            >
+              <iconify-icon icon="ph:stop-circle" width="16" height="16"></iconify-icon>Arrêter
+            </button>
+          </div>
+        </article>
+        <article class="bg-card rounded-2xl border border-border p-4 shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <h2 class="font-heading text-base font-semibold truncate">Zone A1</h2>
+                <span
+                  class="inline-flex items-center gap-1 text-xs font-medium rounded-full px-2 py-0.5 bg-secondary text-secondary-foreground"
+                  ><span class="size-1.5 rounded-full bg-primary"></span>Active</span
+                >
+              </div>
+              <p class="text-sm text-muted-foreground mt-0.5">Blé tendre · 18,0 ha</p>
+            </div>
+            <div class="text-right">
+              <p class="font-heading text-2xl font-bold tabular-nums">62 %</p>
+              <p class="text-xs text-muted-foreground">Humidité sol</p>
+            </div>
+          </div>
+          <div class="h-2 rounded-full bg-muted overflow-hidden mt-3">
+            <div class="h-full w-[62%] bg-primary rounded-full"></div>
+          </div>
+          <div class="flex items-center justify-between mt-3">
+            <p class="text-xs text-muted-foreground flex items-center gap-1">
+              <iconify-icon icon="ph:clock" width="14" height="14"></iconify-icon>Relevé il y a 5
+              min
+            </p>
+            <button
+              class="inline-flex items-center gap-1.5 rounded-xl bg-primary text-primary-foreground px-3 py-2 text-sm font-semibold"
+            >
+              <iconify-icon icon="ph:play" width="16" height="16"></iconify-icon>Démarrer
+            </button>
+          </div>
+        </article>
+        <article class="bg-card rounded-2xl border border-border p-4 shadow-sm">
+          <div class="flex items-start justify-between gap-3">
+            <div class="min-w-0">
+              <div class="flex items-center gap-2">
+                <h2 class="font-heading text-base font-semibold truncate">Zone C3</h2>
+                <span
+                  class="inline-flex items-center gap-1 text-xs font-medium rounded-full px-2 py-0.5 bg-destructive/10 text-destructive"
+                  ><span class="size-1.5 rounded-full bg-destructive"></span>Données anciennes</span
+                >
+              </div>
+              <p class="text-sm text-muted-foreground mt-0.5">Tournesol · 9,6 ha</p>
+            </div>
+            <div class="text-right">
+              <p class="font-heading text-2xl font-bold tabular-nums text-destructive">18 %</p>
+              <p class="text-xs text-muted-foreground">Humidité sol</p>
+            </div>
+          </div>
+          <div class="h-2 rounded-full bg-muted overflow-hidden mt-3">
+            <div class="h-full w-[18%] bg-destructive rounded-full"></div>
+          </div>
+          <div class="flex items-center justify-between mt-3">
+            <p class="text-xs text-destructive flex items-center gap-1 font-medium">
+              <iconify-icon icon="ph:warning" width="14" height="14"></iconify-icon>Dernier relevé
+              il y a 2 h
+            </p>
+            <button
+              class="inline-flex items-center gap-1.5 rounded-xl border border-border bg-card px-3 py-2 text-sm font-semibold"
+            >
+              <iconify-icon icon="ph:play" width="16" height="16"></iconify-icon>Démarrer
+            </button>
+          </div>
+        </article>
+      </main>
+      <nav class="fixed bottom-0 inset-x-0 bg-card border-t border-border flex">
+        <a class="flex-1 flex flex-col items-center gap-1 py-3 text-muted-foreground"
+          ><iconify-icon icon="ph:house" width="20" height="20"></iconify-icon
+          ><span class="text-[11px] font-medium">Accueil</span></a
+        ><a class="flex-1 flex flex-col items-center gap-1 py-3 text-primary"
+          ><iconify-icon icon="ph:map-trifold" width="20" height="20"></iconify-icon
+          ><span class="text-[11px] font-medium">Zones</span></a
+        ><a class="flex-1 flex flex-col items-center gap-1 py-3 text-muted-foreground"
+          ><iconify-icon icon="ph:chart-line" width="20" height="20"></iconify-icon
+          ><span class="text-[11px] font-medium">Mesures</span></a
+        ><a class="flex-1 flex flex-col items-center gap-1 py-3 text-muted-foreground"
+          ><iconify-icon
+            icon="material-symbols:faucet-rounded"
+            width="20"
+            height="20"
+          ></iconify-icon
+          ><span class="text-[11px] font-medium">Irrigation</span></a
+        ><a class="flex-1 flex flex-col items-center gap-1 py-3 text-muted-foreground"
+          ><iconify-icon icon="ph:clock-counter-clockwise" width="20" height="20"></iconify-icon
+          ><span class="text-[11px] font-medium">Activité</span></a
+        >
+      </nav>
+    </div>
+  </body>
+</html>

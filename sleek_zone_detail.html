@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZoneDetail</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-destructive-foreground: var(--destructive-foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-sans: var(--font-sans);
+        --font-heading: var(--font-heading, var(--font-sans));
+        --font-serif: var(--font-serif);
+        --font-mono: var(--font-mono);
+      }
+
+      @theme {
+        --radius-xs: calc(var(--radius) - 8px);
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+        --radius-2xl: calc(var(--radius) + 8px);
+        --radius-3xl: calc(var(--radius) + 16px);
+        --radius-4xl: calc(var(--radius) + 24px);
+      }
+
+      * {
+        corner-shape: var(--shape, round);
+      }
+
+      .rounded-full,
+      .rounded-none,
+      .rounded-t-full,
+      .rounded-t-none,
+      .rounded-r-full,
+      .rounded-r-none,
+      .rounded-b-full,
+      .rounded-b-none,
+      .rounded-l-full,
+      .rounded-l-none,
+      .rounded-s-full,
+      .rounded-s-none,
+      .rounded-e-full,
+      .rounded-e-none,
+      .rounded-tl-full,
+      .rounded-tl-none,
+      .rounded-tr-full,
+      .rounded-tr-none,
+      .rounded-bl-full,
+      .rounded-bl-none,
+      .rounded-br-full,
+      .rounded-br-none,
+      .rounded-ss-full,
+      .rounded-ss-none,
+      .rounded-se-full,
+      .rounded-se-none,
+      .rounded-es-full,
+      .rounded-es-none,
+      .rounded-ee-full,
+      .rounded-ee-none {
+        corner-shape: round;
+      }
+
+      @utility rounded-* {
+        border-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-t-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-r-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-b-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-l-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tl-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tr-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-bl-* {
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-br-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-s-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-e-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ss-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-se-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-es-* {
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ee-* {
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground font-sans;
+        }
+      }
+
+      :root {
+        --shape: squircle;
+        --shape-multiplier: 1;
+
+        --background: #f6f8f5;
+        --foreground: #13201a;
+        --primary: #0a723b;
+        --primary-foreground: #ffffff;
+        --secondary: #e4efe7;
+        --secondary-foreground: #0a723b;
+        --muted: #edf2ee;
+        --muted-foreground: #5e6b63;
+        --accent: #e2f1fa;
+        --accent-foreground: #0b5c86;
+        --destructive: #c62828;
+        --destructive-foreground: #ffffff;
+        --card: #ffffff;
+        --card-foreground: #13201a;
+        --popover: #ffffff;
+        --popover-foreground: #13201a;
+        --border: #dce5de;
+        --input: #f1f5f2;
+        --ring: #0a723b;
+        --chart-1: #0a723b;
+        --chart-2: #2f9bd6;
+        --chart-3: #8bc34a;
+        --chart-4: #b5833a;
+        --chart-5: #5c7a6a;
+
+        --font-sans: "Inter", sans-serif;
+        --font-heading: "Inter", sans-serif;
+        --font-serif: "Playfair Display", serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --radius: 0.875rem;
+      }
+
+      @supports (corner-shape: squircle) {
+        :root {
+          --shape-multiplier: 2.5;
+        }
+      }
+
+      /* Prevent layout shift for icons without explicit dimensions */
+      iconify-icon:not([width]):not([height]) {
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen bg-background text-foreground pb-24">
+      <header class="px-5 pt-6 pb-4 flex items-center gap-3">
+        <button
+          class="size-10 rounded-xl bg-card border border-border flex items-center justify-center"
+          aria-label="Retour"
+        >
+          <iconify-icon icon="ph:arrow-left" width="20" height="20"></iconify-icon>
+        </button>
+        <div class="flex-1 min-w-0">
+          <h1 class="font-heading text-xl font-bold truncate">Zone B2</h1>
+          <p class="text-sm text-muted-foreground">Maïs · 3 capteurs</p>
+        </div>
+        <span
+          class="inline-flex items-center gap-1.5 text-xs font-medium rounded-full px-2.5 py-1 bg-accent text-accent-foreground"
+          ><span class="size-1.5 rounded-full bg-chart-2"></span>Irrigation</span
+        >
+      </header>
+      <main class="px-5 space-y-4">
+        <section class="bg-card rounded-2xl border border-border p-4 shadow-sm">
+          <div class="flex items-end justify-between">
+            <div>
+              <p class="text-sm text-muted-foreground">Humidité actuelle</p>
+              <p class="font-heading text-4xl font-bold tabular-nums">
+                41 <span class="text-xl text-muted-foreground">%</span>
+              </p>
+            </div>
+            <div class="text-right">
+              <p class="text-xs text-muted-foreground">Cible</p>
+              <p class="font-semibold tabular-nums">45 – 65 %</p>
+            </div>
+          </div>
+          <div class="relative h-2.5 rounded-full bg-muted mt-4">
+            <div
+              style="left: 45%; width: 20%"
+              class="absolute top-0 h-full rounded-full bg-primary/25"
+            ></div>
+            <div
+              style="left: calc(41% - 8px)"
+              class="absolute top-1/2 -translate-y-1/2 size-4 rounded-full bg-chart-2 border-2 border-card shadow"
+            ></div>
+          </div>
+          <div class="flex justify-between text-[11px] text-muted-foreground mt-2">
+            <span>0 %</span><span>Zone cible</span><span>100 %</span>
+          </div>
+        </section>
+        <section class="bg-card rounded-2xl border border-border p-4 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="font-heading text-base font-semibold">Historique</h2>
+            <div class="flex gap-1 bg-muted rounded-xl p-1 text-xs font-medium">
+              <button class="px-2.5 py-1 rounded-lg bg-card shadow-sm">24h</button
+              ><button class="px-2.5 py-1 rounded-lg text-muted-foreground">7j</button
+              ><button class="px-2.5 py-1 rounded-lg text-muted-foreground">30j</button>
+            </div>
+          </div>
+          <svg
+            viewBox="0 0 300 120"
+            class="w-full h-32"
+            aria-label="Historique d&#39;humidité"
+            preserveAspectRatio="none"
+          >
+            <rect x="0" y="36" width="300" height="36" class="fill-primary/10" />
+            <line
+              x1="0"
+              x2="300"
+              y1="36"
+              y2="36"
+              stroke="currentColor"
+              class="text-primary"
+              stroke-dasharray="4 4"
+            />
+            <line
+              x1="0"
+              x2="300"
+              y1="72"
+              y2="72"
+              stroke="currentColor"
+              class="text-primary"
+              stroke-dasharray="4 4"
+            />
+            <path
+              d="M0 80 C30 70, 60 55, 100 60 S160 95, 200 85 S260 50, 300 58 L300 120 L0 120 Z"
+              class="fill-chart-2/15"
+            />
+            <path
+              d="M0 80 C30 70, 60 55, 100 60 S160 95, 200 85 S260 50, 300 58"
+              fill="none"
+              stroke="currentColor"
+              class="text-chart-2"
+              stroke-width="2.5"
+              stroke-linecap="round"
+            />
+          </svg>
+          <div class="flex justify-between text-[11px] text-muted-foreground mt-1">
+            <span>00h</span><span>06h</span><span>12h</span><span>18h</span><span>Now</span>
+          </div>
+        </section>
+        <section
+          class="bg-card rounded-2xl border border-border p-4 shadow-sm flex items-center gap-3"
+        >
+          <div
+            class="size-11 rounded-xl bg-accent text-accent-foreground flex items-center justify-center"
+          >
+            <iconify-icon
+              icon="material-symbols:faucet-rounded"
+              width="24"
+              height="24"
+            ></iconify-icon>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm text-muted-foreground">Vanne</p>
+            <p class="font-semibold">Ouverte</p>
+            <p class="text-xs text-muted-foreground truncate">
+              Dernière commande : ouverture manuelle · 08:12
+            </p>
+          </div>
+          <span class="size-2.5 rounded-full bg-chart-2"></span>
+        </section>
+        <section class="bg-card rounded-2xl border border-border p-4 shadow-sm">
+          <h2 class="font-heading text-base font-semibold mb-3">Irrigation manuelle</h2>
+          <p class="text-sm text-muted-foreground mb-2">Durée</p>
+          <div class="grid grid-cols-3 gap-2 mb-3">
+            <button class="rounded-xl border border-border bg-background py-2 text-sm font-medium">
+              5 min</button
+            ><button
+              class="rounded-xl bg-primary text-primary-foreground py-2 text-sm font-semibold"
+            >
+              15 min</button
+            ><button class="rounded-xl border border-border bg-background py-2 text-sm font-medium">
+              30 min
+            </button>
+          </div>
+          <div class="flex items-center justify-between bg-input rounded-xl px-3 h-11 mb-3">
+            <button
+              class="size-8 rounded-lg bg-card border border-border flex items-center justify-center"
+              aria-label="Diminuer"
+            >
+              <iconify-icon icon="ph:minus" width="16" height="16"></iconify-icon></button
+            ><span class="font-semibold tabular-nums">15 min</span
+            ><button
+              class="size-8 rounded-lg bg-card border border-border flex items-center justify-center"
+              aria-label="Augmenter"
+            >
+              <iconify-icon icon="ph:plus" width="16" height="16"></iconify-icon>
+            </button>
+          </div>
+          <div class="grid grid-cols-2 gap-2">
+            <button
+              class="rounded-xl bg-primary text-primary-foreground py-3 text-sm font-semibold flex items-center justify-center gap-2"
+            >
+              <iconify-icon icon="ph:play" width="16" height="16"></iconify-icon>Démarrer</button
+            ><button
+              class="rounded-xl border border-border bg-card py-3 text-sm font-semibold flex items-center justify-center gap-2"
+            >
+              <iconify-icon icon="ph:stop" width="16" height="16"></iconify-icon>Arrêter
+            </button>
+          </div>
+        </section>
+        <section class="bg-card rounded-2xl border border-border p-4 shadow-sm">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="font-heading text-base font-semibold">Automatisation</h2>
+              <p class="text-sm text-muted-foreground">Active · Seuil 45 % · Durée 20 min</p>
+            </div>
+            <span class="relative inline-flex h-6 w-11 rounded-full bg-primary" aria-label="Activé"
+              ><span class="absolute right-0.5 top-0.5 size-5 rounded-full bg-white shadow"></span
+            ></span>
+          </div>
+          <div class="grid grid-cols-2 gap-2 mt-3 text-sm">
+            <div class="bg-background rounded-xl p-3">
+              <p class="text-xs text-muted-foreground">Seuil bas</p>
+              <p class="font-semibold tabular-nums">45 %</p>
+            </div>
+            <div class="bg-background rounded-xl p-3">
+              <p class="text-xs text-muted-foreground">Seuil haut</p>
+              <p class="font-semibold tabular-nums">65 %</p>
+            </div>
+          </div>
+        </section>
+        <section class="bg-card rounded-2xl border border-border p-4 shadow-sm">
+          <div class="flex items-center justify-between mb-3">
+            <h2 class="font-heading text-base font-semibold">Capteurs</h2>
+            <span class="text-xs text-muted-foreground">Mis à jour à 08:27</span>
+          </div>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center justify-between">
+              <span>Capteur B2-01</span
+              ><span class="flex items-center gap-1.5 text-secondary-foreground font-medium"
+                ><span class="size-2 rounded-full bg-primary"></span>En ligne</span
+              >
+            </li>
+            <li class="flex items-center justify-between">
+              <span>Capteur B2-02</span
+              ><span class="flex items-center gap-1.5 text-secondary-foreground font-medium"
+                ><span class="size-2 rounded-full bg-primary"></span>En ligne</span
+              >
+            </li>
+            <li class="flex items-center justify-between">
+              <span>Capteur B2-03</span
+              ><span class="flex items-center gap-1.5 text-destructive font-medium"
+                ><span class="size-2 rounded-full bg-destructive"></span>Batterie faible</span
+              >
+            </li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="font-heading text-base font-semibold mb-3">Activité récente</h2>
+          <ul class="space-y-2">
+            <li
+              class="bg-card rounded-2xl border border-border p-3 flex items-center gap-3 shadow-sm"
+            >
+              <div
+                class="size-9 rounded-xl bg-accent text-accent-foreground flex items-center justify-center"
+              >
+                <iconify-icon icon="ph:drop" width="16" height="16"></iconify-icon>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium">Ouverture manuelle · 15 min</p>
+                <p class="text-xs text-muted-foreground">Aujourd'hui · 08:12</p>
+              </div>
+              <span
+                class="text-xs font-medium rounded-full px-2 py-0.5 bg-secondary text-secondary-foreground"
+                >Exécuté</span
+              >
+            </li>
+            <li
+              class="bg-card rounded-2xl border border-border p-3 flex items-center gap-3 shadow-sm"
+            >
+              <div
+                class="size-9 rounded-xl bg-muted text-muted-foreground flex items-center justify-center"
+              >
+                <iconify-icon icon="ph:robot" width="16" height="16"></iconify-icon>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium">Fermeture automatique</p>
+                <p class="text-xs text-muted-foreground">Hier · 19:40</p>
+              </div>
+              <span
+                class="text-xs font-medium rounded-full px-2 py-0.5 bg-secondary text-secondary-foreground"
+                >Exécuté</span
+              >
+            </li>
+          </ul>
+        </section>
+      </main>
+      <nav class="fixed bottom-0 inset-x-0 bg-card border-t border-border flex">
+        <a class="flex-1 flex flex-col items-center gap-1 py-3 text-muted-foreground"
+          ><iconify-icon icon="ph:house" width="20" height="20"></iconify-icon
+          ><span class="text-[11px] font-medium">Accueil</span></a
+        ><a class="flex-1 flex flex-col items-center gap-1 py-3 text-primary"
+          ><iconify-icon icon="ph:map-trifold" width="20" height="20"></iconify-icon
+          ><span class="text-[11px] font-medium">Zones</span></a
+        ><a class="flex-1 flex flex-col items-center gap-1 py-3 text-muted-foreground"
+          ><iconify-icon icon="ph:chart-line" width="20" height="20"></iconify-icon
+          ><span class="text-[11px] font-medium">Mesures</span></a
+        ><a class="flex-1 flex flex-col items-center gap-1 py-3 text-muted-foreground"
+          ><iconify-icon
+            icon="material-symbols:faucet-rounded"
+            width="20"
+            height="20"
+          ></iconify-icon
+          ><span class="text-[11px] font-medium">Irrigation</span></a
+        ><a class="flex-1 flex flex-col items-center gap-1 py-3 text-muted-foreground"
+          ><iconify-icon icon="ph:clock-counter-clockwise" width="20" height="20"></iconify-icon
+          ><span class="text-[11px] font-medium">Activité</span></a
+        >
+      </nav>
+    </div>
+  </body>
+</html>
