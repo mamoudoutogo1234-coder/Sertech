@@ -188,16 +188,16 @@ class _DashboardBody extends ConsumerWidget {
     }
 
     final selectedZoneId = ref.watch(historyZoneProvider);
-    final selectedZone =
+    Zone selectedZone =
         zones.cast<Zone?>().firstWhere(
           (zone) => zone?.id == selectedZoneId,
           orElse: () => snapshot.freshestZone as Zone? ?? zones.first,
         ) ??
         zones.first;
-
-    final measurement = snapshot.measurementFor(selectedZone.id);
-    final freshness = FreshnessUtils.of(measurement);
-    final moisture = measurement?.moisturePercent;
+    if (zones.isNotEmpty &&
+        !zones.any((zone) => zone.id == selectedZone.id)) {
+      selectedZone = zones.first;
+    }
 
     final executingCommands = snapshot.recentCommands
         .where((command) => command.status == ValveCommandStatus.executing)
@@ -213,19 +213,42 @@ class _DashboardBody extends ConsumerWidget {
         const SizedBox(height: 24),
 
         // Primary information: soil moisture and measurement freshness.
-        _MoistureOverview(
-          zoneName: selectedZone.name,
-          moisture: moisture,
-          freshnessLabel: freshness == ReadingFreshness.fresh
-              ? l10n.dataFresh
-              : freshness == ReadingFreshness.expired
-              ? l10n.dataStale
-              : l10n.noMeasurementsYet,
-          isFresh: freshness == ReadingFreshness.fresh,
-          recordedAt: measurement?.recordedAt == null
-              ? null
-              : context.relativeTime(measurement!.recordedAt),
-          onIrrigationTap: () => context.goNamed(RouteNames.irrigation),
+        SizedBox(
+          height: 210,
+          child: PageView.builder(
+            itemCount: zones.length,
+            onPageChanged: (index) {
+              ref.read(historyZoneProvider.notifier).state = zones[index].id;
+            },
+            itemBuilder: (context, index) {
+              final zone = zones[index];
+              final measurement = snapshot.measurementFor(zone.id);
+              final freshness = FreshnessUtils.of(measurement);
+              final moisture = measurement?.moisturePercent;
+              return Padding(
+                padding: EdgeInsets.only(
+                  right: index == zones.length - 1 ? 0 : 12,
+                ),
+                child: SizedBox(
+                  height: 210,
+                  child: _MoistureOverview(
+                    zoneName: zone.name,
+                    moisture: moisture,
+                    freshnessLabel: freshness == ReadingFreshness.fresh
+                        ? l10n.dataFresh
+                        : freshness == ReadingFreshness.expired
+                        ? l10n.dataStale
+                        : l10n.noMeasurementsYet,
+                    isFresh: freshness == ReadingFreshness.fresh,
+                    recordedAt: measurement?.recordedAt == null
+                        ? null
+                        : context.relativeTime(measurement!.recordedAt),
+                    onIrrigationTap: () => context.goNamed(RouteNames.irrigation),
+                  ),
+                ),
+              );
+            },
+          ),
         ),
 
         const SizedBox(height: 20),
@@ -366,7 +389,7 @@ class _MoistureOverview extends StatelessWidget {
 
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(22),
+      padding: const EdgeInsets.all(18),
       decoration: BoxDecoration(
         color: colors.primaryContainer,
         borderRadius: BorderRadius.circular(28),
@@ -374,22 +397,23 @@ class _MoistureOverview extends StatelessWidget {
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Row(
             children: [
               Container(
-                width: 42,
-                height: 42,
+                width: 38,
+                height: 38,
                 decoration: BoxDecoration(
                   color: colors.onPrimaryContainer.withValues(alpha: 0.08),
-                  borderRadius: BorderRadius.circular(14),
+                  borderRadius: BorderRadius.circular(12),
                 ),
                 child: Icon(
                   Icons.grass_rounded,
                   color: colors.onPrimaryContainer,
                 ),
               ),
-              const SizedBox(width: 12),
+              const SizedBox(width: 10),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -403,7 +427,7 @@ class _MoistureOverview extends StatelessWidget {
                         color: colors.onPrimaryContainer,
                       ),
                     ),
-                    const SizedBox(height: 3),
+                    const SizedBox(height: 2),
                     Text(
                       'Humidité du sol',
                       style: theme.textTheme.bodySmall?.copyWith(
@@ -415,9 +439,31 @@ class _MoistureOverview extends StatelessWidget {
                   ],
                 ),
               ),
+              Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: colors.onPrimaryContainer.withValues(alpha: 0.18),
+                      blurRadius: 10,
+                      offset: const Offset(0, 4),
+                    ),
+                  ],
+                ),
+                child: IconButton(
+                  onPressed: onIrrigationTap,
+                  icon: Icon(
+                    Icons.water_drop_outlined,
+                    color: colors.onPrimaryContainer,
+                  ),
+                  tooltip: 'Irrigation',
+                  visualDensity: VisualDensity.compact,
+                  padding: EdgeInsets.zero,
+                ),
+              ),
             ],
           ),
-          const SizedBox(height: 26),
+          const SizedBox(height: 16),
 
           Row(
             crossAxisAlignment: CrossAxisAlignment.end,
@@ -427,9 +473,9 @@ class _MoistureOverview extends StatelessWidget {
                   hasValue ? NumberFormatter.percentValue(moisture!) : '—',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: theme.textTheme.displayMedium?.copyWith(
+                  style: theme.textTheme.headlineLarge?.copyWith(
                     fontWeight: FontWeight.w800,
-                    letterSpacing: -1.5,
+                    letterSpacing: -1.2,
                     height: 1,
                     color: colors.onPrimaryContainer,
                   ),
@@ -437,10 +483,10 @@ class _MoistureOverview extends StatelessWidget {
               ),
               if (hasValue)
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 3),
+                  padding: const EdgeInsets.only(bottom: 2),
                   child: Text(
                     '%',
-                    style: theme.textTheme.headlineSmall?.copyWith(
+                    style: theme.textTheme.titleLarge?.copyWith(
                       color: colors.onPrimaryContainer.withValues(alpha: 0.7),
                       fontWeight: FontWeight.w600,
                     ),
@@ -449,14 +495,14 @@ class _MoistureOverview extends StatelessWidget {
             ],
           ),
 
-          const SizedBox(height: 18),
+          const SizedBox(height: 12),
 
           if (hasValue)
             ClipRRect(
               borderRadius: BorderRadius.circular(100),
               child: LinearProgressIndicator(
                 value: moisture!.clamp(0, 100) / 100,
-                minHeight: 7,
+                minHeight: 6,
                 backgroundColor: colors.onPrimaryContainer.withValues(
                   alpha: 0.12,
                 ),
@@ -466,16 +512,16 @@ class _MoistureOverview extends StatelessWidget {
               ),
             ),
 
-          const SizedBox(height: 16),
+          const SizedBox(height: 12),
 
           Row(
             children: [
               Icon(
                 isFresh ? Icons.check_circle_outline : Icons.info_outline,
-                size: 17,
+                size: 16,
                 color: colors.onPrimaryContainer.withValues(alpha: 0.85),
               ),
-              const SizedBox(width: 7),
+              const SizedBox(width: 6),
               Expanded(
                 child: Text(
                   freshnessLabel,
@@ -489,7 +535,7 @@ class _MoistureOverview extends StatelessWidget {
           ),
 
           if (recordedAt != null) ...[
-            const SizedBox(height: 5),
+            const SizedBox(height: 4),
             Text(
               'Dernière mesure : $recordedAt',
               style: theme.textTheme.bodySmall?.copyWith(
@@ -498,24 +544,7 @@ class _MoistureOverview extends StatelessWidget {
             ),
           ],
 
-          const SizedBox(height: 22),
-
-          SizedBox(
-            width: double.infinity,
-            child: FilledButton.icon(
-              onPressed: onIrrigationTap,
-              style: FilledButton.styleFrom(
-                backgroundColor: colors.onPrimaryContainer,
-                foregroundColor: colors.primaryContainer,
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-              icon: const Icon(Icons.water_drop_outlined, size: 19),
-              label: const Text('Ouvrir le contrôle d’irrigation'),
-            ),
-          ),
+          const SizedBox(height: 10),
         ],
       ),
     );
