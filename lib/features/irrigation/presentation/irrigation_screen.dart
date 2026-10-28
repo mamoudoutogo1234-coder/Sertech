@@ -361,7 +361,14 @@ class _ModeSelectorState extends ConsumerState<_ModeSelector> {
                   children: [
                     Icon(Icons.handyman_outlined, color: !auto ? Theme.of(context).colorScheme.onPrimaryContainer : null),
                     const SizedBox(width: AppSpacing.s8),
-                    Text(l10n.manualIrrigation, style: TextStyle(color: !auto ? Theme.of(context).colorScheme.onPrimaryContainer : null)),
+                    Flexible(
+                      child: Text(
+                        'Manuel',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: TextStyle(color: !auto ? Theme.of(context).colorScheme.onPrimaryContainer : null),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -381,7 +388,14 @@ class _ModeSelectorState extends ConsumerState<_ModeSelector> {
                   children: [
                     Icon(Icons.auto_mode_outlined, color: auto ? Theme.of(context).colorScheme.onPrimaryContainer : null),
                     const SizedBox(width: AppSpacing.s8),
-                    Text(l10n.automation, style: TextStyle(color: auto ? Theme.of(context).colorScheme.onPrimaryContainer : null)),
+                    Flexible(
+                      child: Text(
+                        'Auto',
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                        style: TextStyle(color: auto ? Theme.of(context).colorScheme.onPrimaryContainer : null),
+                      ),
+                    ),
                   ],
                 ),
               ),
