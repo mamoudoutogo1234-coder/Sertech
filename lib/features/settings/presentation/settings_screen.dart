@@ -15,6 +15,7 @@ import '../../../shared/widgets/page_header.dart';
 import '../../../shared/widgets/section_header.dart';
 import '../../../shared/widgets/sertech_scaffold.dart';
 import '../../../shared/widgets/status_badge.dart';
+import '../../../shared/widgets/surface_panel.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -43,45 +44,64 @@ class SettingsScreen extends ConsumerWidget {
             ),
             eyebrow: l10n.appName,
             title: l10n.settingsTitle,
-            subtitle: l10n.sertechDesc,
           ),
-          SectionHeader(title: l10n.appearance),
-          Card(
+          const SizedBox(height: AppSpacing.s16),
+          Text(
+            l10n.appearance,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.s10),
+          SurfacePanel(
+            padding: EdgeInsets.zero,
             child: Column(
               children: [
-                ListTile(
-                  leading: const Icon(Icons.brightness_6_outlined),
-                  title: Text(l10n.theme),
-                  subtitle: Text(_themeLabel(themeMode, l10n)),
-                  trailing: const Icon(Icons.chevron_right),
+                _SettingsTile(
+                  icon: Icons.brightness_6_outlined,
+                  title: l10n.theme,
+                  subtitle: _themeLabel(themeMode, l10n),
                   onTap: () => _showThemePicker(context, ref, l10n, themeMode),
                 ),
-                const Divider(height: 1),
-                ListTile(
-                  leading: const Icon(Icons.translate),
-                  title: Text(l10n.language),
-                  subtitle: Text(_languageLabel(locale, l10n)),
-                  trailing: const Icon(Icons.chevron_right),
+                Divider(
+                  height: 1,
+                  indent: 56,
+                  color: theme.colorScheme.outlineVariant,
+                ),
+                _SettingsTile(
+                  icon: Icons.translate,
+                  title: l10n.language,
+                  subtitle: _languageLabel(locale, l10n),
                   onTap: () => _showLanguagePicker(context, ref, l10n, locale),
                 ),
               ],
             ),
           ),
-          SectionHeader(title: l10n.dataSource),
-          Card(
+          const SizedBox(height: AppSpacing.s20),
+          Text(
+            l10n.dataSource,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.s10),
+          SurfacePanel(
+            padding: EdgeInsets.zero,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(
                     AppSpacing.s16,
-                    AppSpacing.s12,
+                    AppSpacing.s14,
                     AppSpacing.s16,
-                    AppSpacing.s8,
+                    AppSpacing.s10,
                   ),
                   child: Text(
                     l10n.dataModeDesc,
-                    style: Theme.of(context).textTheme.bodySmall,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
                   ),
                 ),
                 RadioGroup<DataMode>(
@@ -107,11 +127,17 @@ class SettingsScreen extends ConsumerWidget {
                               ? l10n.configured
                               : l10n.notConfiguredLocalOnly,
                         ),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.s16,
+                        ),
                       ),
                       RadioListTile<DataMode>(
                         value: DataMode.inMemory,
                         title: Text(l10n.dataModeInMemory),
                         subtitle: Text(l10n.demoScenarioSubtitle),
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: AppSpacing.s16,
+                        ),
                       ),
                     ],
                   ),
@@ -120,122 +146,133 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ),
           if (dataMode == DataMode.inMemory) ...[
-            SectionHeader(title: l10n.demoScenario),
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(AppSpacing.s16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      l10n.currentScenario,
-                      style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w600,
+            const SizedBox(height: AppSpacing.s20),
+            Text(
+              l10n.demoScenario,
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+              ),
+            ),
+            const SizedBox(height: AppSpacing.s10),
+            SurfacePanel(
+              padding: const EdgeInsets.all(AppSpacing.s16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    l10n.currentScenario,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: AppSpacing.s12),
+                  Wrap(
+                    spacing: AppSpacing.s8,
+                    runSpacing: AppSpacing.s8,
+                    children: [
+                      _Chip(
+                        label: l10n.scenarioNominal,
+                        selected: scenario == DemoScenario.nominal,
+                        onTap: () =>
+                            ref.read(demoScenarioProvider.notifier).state =
+                                DemoScenario.nominal,
                       ),
-                    ),
-                    const SizedBox(height: AppSpacing.s12),
-                    Wrap(
-                      spacing: AppSpacing.s8,
-                      runSpacing: AppSpacing.s8,
-                      children: [
-                        _Chip(
-                          label: l10n.scenarioNominal,
-                          selected: scenario == DemoScenario.nominal,
-                          onTap: () =>
-                              ref.read(demoScenarioProvider.notifier).state =
-                                  DemoScenario.nominal,
-                        ),
-                        _Chip(
-                          label: l10n.scenarioStaleSensor,
-                          selected: scenario == DemoScenario.staleSensor,
-                          onTap: () =>
-                              ref.read(demoScenarioProvider.notifier).state =
-                                  DemoScenario.staleSensor,
-                        ),
-                        _Chip(
-                          label: l10n.scenarioNoMeasurements,
-                          selected: scenario == DemoScenario.noMeasurements,
-                          onTap: () =>
-                              ref.read(demoScenarioProvider.notifier).state =
-                                  DemoScenario.noMeasurements,
-                        ),
-                        _Chip(
-                          label: l10n.scenarioPendingCommands,
-                          selected: scenario == DemoScenario.pendingCommands,
-                          onTap: () =>
-                              ref.read(demoScenarioProvider.notifier).state =
-                                  DemoScenario.pendingCommands,
-                        ),
-                        _Chip(
-                          label: l10n.scenarioFailedCommand,
-                          selected: scenario == DemoScenario.failedCommand,
-                          onTap: () =>
-                              ref.read(demoScenarioProvider.notifier).state =
-                                  DemoScenario.failedCommand,
-                        ),
-                        _Chip(
-                          label: l10n.scenarioEmptyInstallation,
-                          selected: scenario == DemoScenario.emptyInstallation,
-                          onTap: () =>
-                              ref.read(demoScenarioProvider.notifier).state =
-                                  DemoScenario.emptyInstallation,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: AppSpacing.s12),
-                    Text(
-                      l10n.demoScenarioDesc,
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant,
+                      _Chip(
+                        label: l10n.scenarioStaleSensor,
+                        selected: scenario == DemoScenario.staleSensor,
+                        onTap: () =>
+                            ref.read(demoScenarioProvider.notifier).state =
+                                DemoScenario.staleSensor,
                       ),
+                      _Chip(
+                        label: l10n.scenarioNoMeasurements,
+                        selected: scenario == DemoScenario.noMeasurements,
+                        onTap: () =>
+                            ref.read(demoScenarioProvider.notifier).state =
+                                DemoScenario.noMeasurements,
+                      ),
+                      _Chip(
+                        label: l10n.scenarioPendingCommands,
+                        selected: scenario == DemoScenario.pendingCommands,
+                        onTap: () =>
+                            ref.read(demoScenarioProvider.notifier).state =
+                                DemoScenario.pendingCommands,
+                      ),
+                      _Chip(
+                        label: l10n.scenarioFailedCommand,
+                        selected: scenario == DemoScenario.failedCommand,
+                        onTap: () =>
+                            ref.read(demoScenarioProvider.notifier).state =
+                                DemoScenario.failedCommand,
+                      ),
+                      _Chip(
+                        label: l10n.scenarioEmptyInstallation,
+                        selected: scenario == DemoScenario.emptyInstallation,
+                        onTap: () =>
+                            ref.read(demoScenarioProvider.notifier).state =
+                                DemoScenario.emptyInstallation,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: AppSpacing.s12),
+                  Text(
+                    l10n.demoScenarioDesc,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ],
-          SectionHeader(title: l10n.account),
-          Card(
+          const SizedBox(height: AppSpacing.s20),
+          Text(
+            l10n.account,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.s10),
+          SurfacePanel(
+            padding: EdgeInsets.zero,
             child: profileAsync.when(
-              loading: () => const ListTile(
-                leading: Icon(Icons.person_outline),
-                title: Text('...'),
+              loading: () => const _SettingsTile(
+                icon: Icons.person_outline,
+                title: '...',
               ),
-              error: (_, _) => ListTile(
-                leading: const Icon(Icons.person_outline),
-                title: Text(l10n.profileUnavailable),
+              error: (_, _) => _SettingsTile(
+                icon: Icons.person_outline,
+                title: l10n.profileUnavailable,
               ),
               data: (Profile? p) {
                 if (p == null) {
-                  return ListTile(
-                    leading: const Icon(Icons.person_outline),
-                    title: Text(l10n.notLoggedIn),
-                    subtitle: Text(
-                      dataMode == DataMode.supabase
-                          ? l10n.tapToSignIn
-                          : l10n.localMode,
-                    ),
+                  return _SettingsTile(
+                    icon: Icons.person_outline,
+                    title: l10n.notLoggedIn,
+                    subtitle: dataMode == DataMode.supabase
+                        ? l10n.tapToSignIn
+                        : l10n.localMode,
                   );
                 }
                 return Column(
                   children: [
-                    ListTile(
-                      leading: const Icon(Icons.person),
-                      title: Text(p.displayName ?? p.id),
-                      subtitle: Text(
-                        dataMode == DataMode.supabase
-                            ? l10n.signedInAs(p.displayName ?? p.id)
-                            : l10n.localMode,
-                      ),
+                    _SettingsTile(
+                      icon: Icons.person,
+                      title: p.displayName ?? p.id,
+                      subtitle: dataMode == DataMode.supabase
+                          ? l10n.signedInAs(p.displayName ?? p.id)
+                          : l10n.localMode,
                     ),
                     if (dataMode == DataMode.supabase) ...[
-                      const Divider(height: 1),
-                      ListTile(
-                        leading: Icon(
-                          Icons.logout,
-                          color: theme.colorScheme.error,
-                        ),
-                        title: Text(l10n.signOut),
+                      Divider(
+                        height: 1,
+                        indent: 56,
+                        color: theme.colorScheme.outlineVariant,
+                      ),
+                      _SettingsTile(
+                        icon: Icons.logout,
+                        iconColor: theme.colorScheme.error,
+                        title: l10n.signOut,
                         onTap: () => ref.read(authControllerProvider).signOut(),
                       ),
                     ],
@@ -244,23 +281,29 @@ class SettingsScreen extends ConsumerWidget {
               },
             ),
           ),
-          SectionHeader(title: l10n.systemStatus),
-          Card(
+          const SizedBox(height: AppSpacing.s20),
+          Text(
+            l10n.systemStatus,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.s10),
+          SurfacePanel(
+            padding: EdgeInsets.zero,
             child: Column(
               children: [
                 Consumer(
                   builder: (context, ref, _) {
                     final isOn =
                         ref.watch(isOnlineProvider).valueOrNull == true;
-                    return ListTile(
-                      leading: Icon(
-                        isOn ? Icons.wifi : Icons.wifi_off,
-                        color: isOn
-                            ? context.statusPalette.success
-                            : context.statusPalette.warning,
-                      ),
-                      title: Text(l10n.networkStatus),
-                      subtitle: Text(isOn ? l10n.online : l10n.offline),
+                    return _SettingsTile(
+                      icon: isOn ? Icons.wifi : Icons.wifi_off,
+                      iconColor: isOn
+                          ? context.statusPalette.success
+                          : context.statusPalette.warning,
+                      title: l10n.networkStatus,
+                      subtitle: isOn ? l10n.online : l10n.offline,
                       trailing: StatusBadge(
                         label: isOn ? l10n.online : l10n.offline,
                         tone: isOn ? StatusTone.success : StatusTone.warning,
@@ -269,24 +312,30 @@ class SettingsScreen extends ConsumerWidget {
                     );
                   },
                 ),
-                const Divider(height: 1),
-                ListTile(
-                  leading: const Icon(Icons.memory_outlined),
-                  title: Text(l10n.rpiStatus),
-                  subtitle: Text(l10n.rpiUnknownDesc),
+                Divider(
+                  height: 1,
+                  indent: 56,
+                  color: theme.colorScheme.outlineVariant,
+                ),
+                _SettingsTile(
+                  icon: Icons.memory_outlined,
+                  title: l10n.rpiStatus,
+                  subtitle: l10n.rpiUnknownDesc,
                   trailing: StatusBadge(
                     label: l10n.rpiUnknown,
                     tone: StatusTone.neutral,
                     dense: true,
                   ),
                 ),
-                const Divider(height: 1),
-                ListTile(
-                  leading: const Icon(Icons.cloud_outlined),
-                  title: Text(l10n.supabaseStatus),
-                  subtitle: Text(
-                    supabaseOk ? l10n.configured : l10n.notConfiguredLocalOnly,
-                  ),
+                Divider(
+                  height: 1,
+                  indent: 56,
+                  color: theme.colorScheme.outlineVariant,
+                ),
+                _SettingsTile(
+                  icon: Icons.cloud_outlined,
+                  title: l10n.supabaseStatus,
+                  subtitle: supabaseOk ? l10n.configured : l10n.notConfiguredLocalOnly,
                   trailing: StatusBadge(
                     label: supabaseOk ? l10n.configured : l10n.notConfigured,
                     tone: supabaseOk ? StatusTone.success : StatusTone.neutral,
@@ -296,12 +345,46 @@ class SettingsScreen extends ConsumerWidget {
               ],
             ),
           ),
-          SectionHeader(title: l10n.aboutApp),
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.eco_outlined),
-              title: Text(l10n.appName),
-              subtitle: Text(l10n.sertechDesc),
+          const SizedBox(height: AppSpacing.s20),
+          Text(
+            l10n.aboutApp,
+            style: theme.textTheme.titleMedium?.copyWith(
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.s10),
+          SurfacePanel(
+            padding: EdgeInsets.zero,
+            child: Column(
+              children: [
+                _SettingsTile(
+                  icon: Icons.eco_outlined,
+                  title: l10n.appName,
+                  subtitle: l10n.sertechDesc,
+                ),
+                Divider(
+                  height: 1,
+                  indent: 56,
+                  color: theme.colorScheme.outlineVariant,
+                ),
+                _SettingsTile(
+                  icon: Icons.help_outline,
+                  title: 'FAQ',
+                  subtitle: 'Questions fréquentes',
+                  onTap: () => _showFaq(context, l10n),
+                ),
+                Divider(
+                  height: 1,
+                  indent: 56,
+                  color: theme.colorScheme.outlineVariant,
+                ),
+                _SettingsTile(
+                  icon: Icons.description_outlined,
+                  title: "Conditions d'utilisation",
+                  subtitle: "Mentions et conditions",
+                  onTap: () => _showTerms(context, l10n),
+                ),
+              ],
             ),
           ),
         ],
@@ -418,6 +501,194 @@ Future<void> _showThemePicker(
   );
   if (selected == null) return;
   await ref.read(themeModeProvider.notifier).setThemeMode(selected);
+}
+
+class _SettingsTile extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  final String? subtitle;
+  final Widget? trailing;
+  final VoidCallback? onTap;
+  final Color? iconColor;
+
+  const _SettingsTile({
+    required this.icon,
+    required this.title,
+    this.subtitle,
+    this.trailing,
+    this.onTap,
+    this.iconColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final color = iconColor ?? theme.colorScheme.onSurfaceVariant;
+    return ListTile(
+      onTap: onTap,
+      leading: Container(
+        width: 40,
+        height: 40,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.primary.withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Icon(icon, color: color),
+      ),
+      title: Text(
+        title,
+        style: theme.textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w600),
+      ),
+      subtitle: subtitle == null
+          ? null
+          : Text(
+              subtitle!,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+            ),
+      trailing: trailing ??
+          (onTap == null ? null : const Icon(Icons.chevron_right)),
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.s16,
+        vertical: AppSpacing.s4,
+      ),
+    );
+  }
+}
+
+Future<void> _showFaq(BuildContext context, AppLocalizations l10n) async {
+  await showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    builder: (sheetContext) {
+      final theme = Theme.of(sheetContext);
+      return SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(AppSpacing.s20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      'FAQ',
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () => Navigator.pop(sheetContext),
+                    icon: const Icon(Icons.close),
+                  ),
+                ],
+              ),
+              const SizedBox(height: AppSpacing.s12),
+              const _FaqItem(
+                question: "Comment fonctionne le mode démo ?",
+                answer:
+                    "Le mode démo utilise des données locales pour tester l'application sans connexion Supabase.",
+              ),
+              const _FaqItem(
+                question: "Comment basculer entre Manuel et Automatique ?",
+                answer:
+                    "Sur l'écran Irrigation, utilisez le sélecteur pour choisir le mode souhaité pour chaque zone.",
+              ),
+              const _FaqItem(
+                question: "Pourquoi certaines mesures sont périmées ?",
+                answer:
+                    "Si aucune nouvelle mesure n'est reçue depuis plus de 30 minutes, l'état devient périmé.",
+              ),
+              const SizedBox(height: AppSpacing.s12),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+Future<void> _showTerms(BuildContext context, AppLocalizations l10n) async {
+  await showModalBottomSheet(
+    context: context,
+    isScrollControlled: true,
+    builder: (sheetContext) {
+      final theme = Theme.of(sheetContext);
+      return SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(AppSpacing.s20),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      "Conditions d'utilisation",
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () => Navigator.pop(sheetContext),
+                    icon: const Icon(Icons.close),
+                  ),
+                ],
+              ),
+              const SizedBox(height: AppSpacing.s12),
+              Text(
+                "Sertech est une application de supervision et de pilotage de l'irrigation agricole. L'utilisation de l'application se fait sous votre propre responsabilité.",
+                style: theme.textTheme.bodyMedium,
+              ),
+              const SizedBox(height: AppSpacing.s12),
+              Text(
+                "Les commandes de vanne sont envoyées via le système configuré et doivent toujours être vérifiées sur le terrain.",
+                style: theme.textTheme.bodyMedium,
+              ),
+              const SizedBox(height: AppSpacing.s16),
+            ],
+          ),
+        ),
+      );
+    },
+  );
+}
+
+class _FaqItem extends StatelessWidget {
+  final String question;
+  final String answer;
+  const _FaqItem({required this.question, required this.answer});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AppSpacing.s12),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            question,
+            style: theme.textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          const SizedBox(height: AppSpacing.s4),
+          Text(
+            answer,
+            style: theme.textTheme.bodyMedium?.copyWith(
+              color: theme.colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class _Chip extends StatelessWidget {
